@@ -3,15 +3,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-class DetailPage extends StatefulWidget {
-  const DetailPage({super.key});
-
-  @override
-  State<DetailPage> createState() => _DetailPageState();
-}
-
-class _DetailPageState extends State<DetailPage> {
-  final _title = 'Alumni Hall Parking';
+class DetailPage extends StatelessWidget {
+  final String title;
+  final int availableSpots;
+  const DetailPage(
+      {super.key, required this.title, required this.availableSpots});
 
   final _image = 'assets/images/dolce_parking.png';
 
@@ -19,7 +15,7 @@ class _DetailPageState extends State<DetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(_title),
+          title: Text(title),
         ),
         body: ListView(
           children: [
@@ -29,7 +25,22 @@ class _DetailPageState extends State<DetailPage> {
               height: 150,
               child: Image.asset(_image),
             ),
-            const SpotsVertical()
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                const Text(
+                  'Parking Area',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  'Available: $availableSpots',
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+
+            const SpotsVertical(), //spot occupancy ui
           ],
         ));
   }

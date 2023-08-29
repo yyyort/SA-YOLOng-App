@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:sa_yolo_ng/detail_page.dart';
 
 FirebaseFirestore firestore = FirebaseFirestore.instance;
 
@@ -135,6 +136,11 @@ class HallContainer extends StatelessWidget {
             children: snapshot.data!.docs.map((DocumentSnapshot document) {
               Map<String, dynamic> data =
                   document.data()! as Map<String, dynamic>;
+
+              //variables
+              String location = data['location'];
+              int availableSpots = data['available_spots'];
+
               return Container(
                 padding: const EdgeInsets.only(bottom: 15),
                 decoration: const BoxDecoration(
@@ -151,14 +157,14 @@ class HallContainer extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          data['location'],
+                          location,
                           style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w900,
                           ),
                         ),
                         Text(
-                          'Available: ${data['available_spots']}',
+                          'Available: $availableSpots',
                           style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -171,7 +177,16 @@ class HallContainer extends StatelessWidget {
                           width: 80,
                           height: 30,
                           child: FloatingActionButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => DetailPage(
+                                          title: location,
+                                          availableSpots: availableSpots,
+                                        )),
+                              );
+                            },
                             backgroundColor: Colors.black,
                             child: const Text('view',
                                 style: TextStyle(
