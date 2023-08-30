@@ -29,6 +29,8 @@ You can fix that by adding this to your shell's config file (.bashrc, .bash_prof
 
 - flutter pub add firebase_core
 - flutterfire configure
+
+- cj nu na
 - import 'package:firebase_core/firebase_core.dart';
 - import 'firebase_options.dart'
 
