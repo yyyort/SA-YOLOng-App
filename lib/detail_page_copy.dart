@@ -40,12 +40,6 @@ class DetailPages extends StatelessWidget {
             ),
             body: ListView(
               children: [
-                Container(
-                  margin: const EdgeInsets.all(10),
-                  width: 300,
-                  height: 150,
-                  child: Image.asset(_image),
-                ),
                 Column(
                   children:
                       snapshot.data!.docs.map((DocumentSnapshot document) {
@@ -58,6 +52,13 @@ class DetailPages extends StatelessWidget {
 
                     return Column(
                       children: [
+                        Container(
+                          margin: const EdgeInsets.all(10),
+                          width: 300,
+                          height: 150,
+                          child: Image.asset(_image),
+                        ),
+
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -75,7 +76,28 @@ class DetailPages extends StatelessWidget {
                           ],
                         ),
 
-                        ListView.builder(
+                        /* GridView.count(
+                          // Create a grid with 2 columns. If you change the scrollDirection to
+                          // horizontal, this produces 2 rows.
+                          crossAxisCount: 2,
+                          // Generate 100 widgets that display their index in the List.
+                          children: List.generate(listSpot.length, (index) {
+                            return Row(
+                              children: [
+                                CarContainer(
+                                    number: index + 1, spot: listSpot[index])
+                              ],
+                            );
+                          }),
+                        ),
+ */
+                        GridView.builder(
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 3,
+                                  mainAxisSpacing: 5,
+                                  crossAxisSpacing: 5,
+                                  childAspectRatio: 1),
                           shrinkWrap: true,
                           itemCount: listSpot.length,
                           itemBuilder: (context, index) {
@@ -138,7 +160,7 @@ class CarContainerOccupied extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 60,
+      width: 80,
       height: 110,
       decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -183,7 +205,7 @@ class CarContainerEmpty extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 60,
+      width: 80,
       height: 110,
       decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -223,14 +245,14 @@ class CarContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     if (spot >= 1) {
       return Container(
-        margin: const EdgeInsets.all(10),
+        margin: const EdgeInsets.all(5),
         child: CarContainerOccupied(
           number: number,
         ),
       );
     } else {
       return Container(
-        margin: const EdgeInsets.all(10),
+        margin: const EdgeInsets.all(5),
         child: CarContainerEmpty(
           number: number,
         ),

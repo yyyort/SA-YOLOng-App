@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:sa_yolo_ng/detail_page.dart';
+import 'package:sa_yolo_ng/detail_page_copy.dart';
 
 FirebaseFirestore firestore = FirebaseFirestore.instance;
 
@@ -22,7 +22,10 @@ class HomePage extends StatelessWidget {
                   SizedBox(
                     height: 30,
                   ),
-                  HallContainer(parkingArea: 'ParkingPlace'),
+                  HallContainer(
+                    parkingArea: 'ParkingPlace',
+                    position: 'horizontal',
+                  ),
                   SizedBox(
                     height: 30,
                   ),
@@ -37,6 +40,7 @@ class HomePage extends StatelessWidget {
                   ),
                   HallContainer(
                     parkingArea: 'alumni_hall',
+                    position: 'horizontal',
                   ),
                 ],
               )
@@ -106,8 +110,10 @@ class StackSearch extends StatelessWidget {
 
 class HallContainer extends StatelessWidget {
   final String parkingArea;
+  final String position;
 
-  const HallContainer({super.key, required this.parkingArea});
+  const HallContainer(
+      {super.key, required this.parkingArea, required this.position});
 
   parkingBuild(parkingArea) {
     Stream<QuerySnapshot> parkingStream =
@@ -181,10 +187,8 @@ class HallContainer extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => DetailPage(
-                                          title: location,
-                                          availableSpots: availableSpots,
-                                        )),
+                                    builder: (context) => DetailPages(
+                                        loc: parkingArea, position: position)),
                               );
                             },
                             backgroundColor: Colors.black,
