@@ -94,10 +94,11 @@ class DetailPages extends StatelessWidget {
                         GridView.builder(
                           gridDelegate:
                               const SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 3,
-                                  mainAxisSpacing: 5,
-                                  crossAxisSpacing: 5,
-                                  childAspectRatio: 1),
+                            crossAxisCount: 3,
+                            mainAxisSpacing: 1,
+                            crossAxisSpacing: 1,
+                            /* childAspectRatio: 1, */
+                          ),
                           shrinkWrap: true,
                           itemCount: listSpot.length,
                           itemBuilder: (context, index) {

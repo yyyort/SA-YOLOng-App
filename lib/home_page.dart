@@ -23,11 +23,22 @@ class HomePage extends StatelessWidget {
                     height: 30,
                   ),
                   HallContainer(
-                    parkingArea: 'ParkingPlace',
+                    parkingArea: 'dolse_garcia_hall',
                     position: 'horizontal',
                   ),
                   SizedBox(
                     height: 30,
+                  ),
+                  HallContainer(
+                    parkingArea: 'blanco_hall',
+                    position: 'vertical',
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  HallContainer(
+                    parkingArea: 'urdaneta_hall',
+                    position: 'horizontal',
                   ),
                   //HallContainer(),
                 ],
@@ -41,6 +52,13 @@ class HomePage extends StatelessWidget {
                   HallContainer(
                     parkingArea: 'alumni_hall',
                     position: 'horizontal',
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  HallContainer(
+                    parkingArea: 'rada_hall',
+                    position: 'vertical',
                   ),
                 ],
               )
@@ -122,9 +140,6 @@ class HallContainer extends StatelessWidget {
     return parkingStream;
   }
 
-/*   final Stream<QuerySnapshot> _parkingStream =
-      FirebaseFirestore.instance.collection('ParkingPlace').snapshots(); */
-
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
@@ -147,15 +162,34 @@ class HallContainer extends StatelessWidget {
               String location = data['location'];
               int availableSpots = data['available_spots'];
 
+              colorPicker(availableSpots) {
+                switch (availableSpots) {
+                  case > 5:
+                    return Colors.lightGreen;
+                  case >= 2:
+                    return Colors.yellowAccent;
+
+                  default:
+                    return Colors.redAccent;
+                }
+              }
+
               return Container(
                 padding: const EdgeInsets.only(bottom: 15),
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(40),
-                    bottomRight: Radius.circular(40),
-                  ),
-                  color: Color(0xFF9EEC83),
-                ),
+                decoration: BoxDecoration(
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.black,
+                        blurRadius: 5,
+                        offset: Offset(-4, 6),
+                      )
+                    ],
+                    borderRadius: const BorderRadius.only(
+                      bottomLeft: Radius.circular(40),
+                      bottomRight: Radius.circular(40),
+                    ),
+                    color: colorPicker(availableSpots) //Colors.green),
+                    ),
                 child: Column(
                   children: [
                     Image.asset('assets/images/dolce_hall.png'),
