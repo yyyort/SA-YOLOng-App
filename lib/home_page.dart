@@ -76,7 +76,7 @@ class StackSearch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 20, bottom: 0, left: 20, right: 20),
+      margin: const EdgeInsets.only(top: 20, bottom: 20, left: 20, right: 20),
       width: 300,
       height: 100,
       child: Stack(
@@ -91,11 +91,9 @@ class StackSearch extends StatelessWidget {
               width: 80,
             ),
           )),
-          Positioned(
-            left: 10,
-            top: 30,
+          Center(
             child: Container(
-              alignment: Alignment.center,
+              margin: const EdgeInsets.all(10.0),
               height: 30,
               width: 250,
               decoration: BoxDecoration(
