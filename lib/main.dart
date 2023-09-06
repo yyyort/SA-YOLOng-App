@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 //import 'package:sa_yolo_ng/detail_page.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:sa_yolo_ng/detail_page_copy.dart';
 import 'package:sa_yolo_ng/home_page.dart';
+import 'package:sa_yolo_ng/home_page_copy.dart';
+import 'package:sa_yolo_ng/parking_area.dart';
 
 import 'firebase_options.dart';
 
@@ -21,12 +22,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
-        home: const HomePage());
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: const HomePage(),
+    );
     /*   */
   }
 }

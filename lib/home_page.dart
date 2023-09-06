@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:sa_yolo_ng/detail_page_copy.dart';
 
-FirebaseFirestore firestore = FirebaseFirestore.instance;
-
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -192,7 +190,7 @@ class HallContainer extends StatelessWidget {
                   children: [
                     Image.asset('assets/images/dolce_hall.png'),
                     Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
                           location,
