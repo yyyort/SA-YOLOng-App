@@ -1,49 +1,32 @@
-/* import 'package:cloud_firestore/cloud_firestore.dart';
- */
-/* 
-build a parking class that represent the parking place
-data
-  location
-  total_available
-  spots []
-  orientation
-  img []
-  id // for routing
-*/
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 
-//q: how to make a class
-//a: https://dart.dev/guides/language/language-tour#classes
-class ParkingPlace {
+FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+class ParkingArea extends ChangeNotifier {
   final String location;
-  final int totalAvailable;
-  final List<num> spots;
-  final String orientation;
-  final List<String> img;
-  final String id;
+  final int availableSpots;
+  final List<dynamic> spots;
 
-  ParkingPlace(this.location, this.totalAvailable, this.spots, this.orientation,
-      this.img, this.id);
-}
+  ParkingArea(
+      {required this.location,
+      required this.availableSpots,
+      required this.spots});
 
-/* 
-https://firebase.flutter.dev/docs/firestore/usage#realtime-changes
-FirebaseFirestore.instance
-    .collection('users')
-    .get()
-    .then((QuerySnapshot querySnapshot) {
-        querySnapshot.docs.forEach((doc) {
-            print(doc["first_name"]);
-        });
-    });
-
- */
-
-/* final dolse = FirebaseFirestore.instance
-    .collection('parking_places')
-    .get()
-    .then((QuerySnapshot querySnapshot) {
-  for (var doc in querySnapshot.docs) {
-    print(doc["location"]);
+  factory ParkingArea.fromFirestore(
+      DocumentSnapshot<Map<String, dynamic>> doc) {
+    Map<String, dynamic> data = doc.data()!;
+    return ParkingArea(
+        location: data['location']! as String,
+        availableSpots: data['available_spots']! as int,
+        spots: data['spots']! as List<dynamic>);
   }
-});
- */
+
+  Map<String, dynamic> toFirestore() {
+    return {
+      'location': location,
+      'available_spots': availableSpots,
+      'spots': spots,
+    };
+  }
+}
