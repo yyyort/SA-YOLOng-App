@@ -51,6 +51,7 @@ class DetailPages extends StatelessWidget {
                     final listSpot = data['spots'];
 
                     return Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
                           margin: const EdgeInsets.all(10),
@@ -94,18 +95,23 @@ class DetailPages extends StatelessWidget {
                         GridView.builder(
                           gridDelegate:
                               const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 3,
-                            mainAxisSpacing: 1,
-                            crossAxisSpacing: 1,
+                            crossAxisCount: 4,
+                            mainAxisSpacing: 2,
+
                             /* childAspectRatio: 1, */
                           ),
                           shrinkWrap: true,
                           itemCount: listSpot.length,
                           itemBuilder: (context, index) {
                             return Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                CarContainer(
-                                    number: index + 1, spot: listSpot[index]),
+                                Container(
+                                  color: Colors.black,
+                                  padding: const EdgeInsets.all(5),
+                                  child: CarContainer(
+                                      number: index + 1, spot: listSpot[index]),
+                                ),
                               ],
                             );
                           },

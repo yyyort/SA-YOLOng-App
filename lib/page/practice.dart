@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sa_yolo_ng/model/parking_area.dart';
@@ -12,18 +10,51 @@ class Practice extends ConsumerWidget {
     /* final AsyncValue<ParkingArea> parking = ref.watch(parkingAreaProvider); */
     final parkingAreas = ref.watch(parkingHalls);
 
-    return /* const Scaffold(
+    return Scaffold(
       body: Column(
         children: [
-          ParkingAreaWidget(
-              location: 'dolse garcia',
-              availableSpots: 10,
-              img: 'assets/images/dolce_hall.png'),
+          const Text('hello'),
+          parkingAreas.when(
+            data: (data) {
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Column(
+                    children: [
+                      ParkingAreaWidget(
+                          location: data[0].location,
+                          availableSpots: data[0].availableSpots,
+                          img: data[0].img),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      ParkingAreaWidget(
+                          location: data[2].location,
+                          availableSpots: data[2].availableSpots,
+                          img: data[2].img),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      ParkingAreaWidget(
+                          location: data[1].location,
+                          availableSpots: data[1].availableSpots,
+                          img: data[1].img),
+                    ],
+                  )
+                ],
+              );
+            },
+            loading: () => const CircularProgressIndicator(),
+            error: (error, stackTrace) => Text('Error: $error'),
+          ),
         ],
       ),
-    ); */
+    );
+  }
 
-        Scaffold(
+  /* Scaffold(
       body: parkingAreas.when(
         data: (data) {
           return ListView(
@@ -43,6 +74,7 @@ class Practice extends ConsumerWidget {
                     index,
                   ) {
                     return Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 30),
                       color: Colors.black,
                       child: ParkingAreaWidget(
                         location: data[index].location,
@@ -64,7 +96,7 @@ class Practice extends ConsumerWidget {
         error: (error, stackTrace) => Text('Error: $error'),
       ),
     );
-  }
+  } */
 }
 
 /* 
@@ -95,63 +127,72 @@ class ParkingAreaWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 330,
-      child: Card(
-          elevation: 5,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(30),
-              bottomRight: Radius.circular(30),
-            ),
-          ),
-          margin: const EdgeInsets.all(10),
-          color: colorPicker(availableSpots),
+    return Column(
+      children: [
+        Container(
+          padding: const EdgeInsets.only(bottom: 15),
+          decoration: BoxDecoration(
+              boxShadow: const [
+                BoxShadow(
+                  color: Colors.black,
+                  blurRadius: 5,
+                  offset: Offset(-4, 6),
+                )
+              ],
+              borderRadius: const BorderRadius.only(
+                bottomLeft: Radius.circular(40),
+                bottomRight: Radius.circular(40),
+              ),
+              color: colorPicker(availableSpots) //Colors.green),
+              ),
           child: Column(
             children: [
-              SizedBox(
-                child: Image.asset(img),
-              ),
-              Text(
-                location,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                ),
-              ),
-              const SizedBox(
-                height: 2,
-              ),
-              Text(
-                'Available: $availableSpots',
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14,
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              SizedBox(
-                  height: 30,
-                  width: 60,
-                  child: FloatingActionButton(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15),
+              Image.asset(img),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    location,
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w900,
                     ),
-                    backgroundColor: Colors.black,
-                    splashColor: Colors.white,
-                    onPressed: () {},
-                    child: const Text(
-                      'view',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
-                      ),
+                  ),
+                  Text(
+                    'Available: $availableSpots',
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
                     ),
-                  ))
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  SizedBox(
+                    width: 80,
+                    height: 30,
+                    child: FloatingActionButton(
+                      onPressed: () {
+                        /* Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => DetailPages(
+                                            loc: parkingArea, position: position)),
+                                  ); */
+                      },
+                      backgroundColor: Colors.black,
+                      child: const Text('view',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold)),
+                    ),
+                  )
+                ],
+              )
             ],
-          )),
+          ),
+        ),
+      ],
     );
   }
 }

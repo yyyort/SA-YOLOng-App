@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 //import 'package:sa_yolo_ng/detail_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sa_yolo_ng/detail_page_copy.dart';
 import 'package:sa_yolo_ng/home_page.dart';
 import 'package:sa_yolo_ng/page/practice.dart';
 import 'package:sa_yolo_ng/service/firebase_options.dart';
