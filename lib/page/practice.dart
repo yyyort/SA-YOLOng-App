@@ -32,17 +32,22 @@ class _ParkingAreasState extends ConsumerState<ParkingAreas> {
     return Scaffold(
       body: Column(
         children: [
-          TextField(
-            onChanged: ((value) => _runInput(value)),
-            decoration: const InputDecoration(
-              hintText: 'Search',
-              prefixIcon: Icon(Icons.search),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(25)),
+          Container(
+            padding: const EdgeInsets.only(left: 30, right: 30),
+            margin: const EdgeInsets.only(top: 20, bottom: 10),
+            height: 35,
+            child: TextField(
+              onChanged: ((value) => _runInput(value)),
+              decoration: const InputDecoration(
+                contentPadding: EdgeInsets.all(5),
+                hintText: 'Search',
+                prefixIcon: Icon(Icons.search),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                ),
               ),
             ),
           ),
-          Text(input),
           Practice(
             input: input,
           ),
@@ -67,32 +72,40 @@ class Practice extends ConsumerWidget {
           return element.location.toLowerCase().contains(input.toLowerCase());
         }).toList();
         return Expanded(
-          child: GridView.builder(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisExtent: 350,
-                mainAxisSpacing: 1,
-                childAspectRatio: 2 / 2),
-            itemCount: area.length,
-            itemBuilder: (
-              context,
-              index,
-            ) {
-              return Container(
-                padding: const EdgeInsets.symmetric(horizontal: 30),
-                child: ParkingAreaWidget(
-                  location: area[index].location,
-                  availableSpots: area[index].availableSpots,
-                  img: area[index].img,
-                ),
-              );
+          child: Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/Eagle_1.png'),
+                opacity: 0.4,
+              ),
+            ),
+            child: GridView.builder(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisExtent: 350,
+                  mainAxisSpacing: 1,
+                  childAspectRatio: 2 / 2),
+              itemCount: area.length,
+              itemBuilder: (
+                context,
+                index,
+              ) {
+                return Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 30),
+                  child: ParkingAreaWidget(
+                    location: area[index].location,
+                    availableSpots: area[index].availableSpots,
+                    img: area[index].img,
+                  ),
+                );
 
-              /*  ParkingAreaWidget(
-                    location: data[index].location,
-                    availableSpots: data[index].availableSpots,
-                    img: data[index].img,
-                  ); */
-            },
+                /*  ParkingAreaWidget(
+                      location: data[index].location,
+                      availableSpots: data[index].availableSpots,
+                      img: data[index].img,
+                    ); */
+              },
+            ),
           ),
         );
       },
@@ -120,11 +133,11 @@ class ParkingAreaWidget extends StatelessWidget {
 
   colorPicker<Color>(int availableSpots) {
     if (availableSpots >= 5) {
-      return Colors.green;
+      return Colors.green[400];
     } else if (availableSpots >= 2) {
-      return Colors.yellow;
+      return Colors.yellowAccent;
     } else {
-      return Colors.red;
+      return Colors.redAccent;
     }
   }
 
@@ -137,9 +150,9 @@ class ParkingAreaWidget extends StatelessWidget {
           decoration: BoxDecoration(
               boxShadow: const [
                 BoxShadow(
-                  color: Colors.black,
+                  color: Color.fromARGB(74, 0, 0, 0),
                   blurRadius: 5,
-                  offset: Offset(-4, 6),
+                  offset: Offset(-6, 6),
                 )
               ],
               borderRadius: const BorderRadius.only(
@@ -173,7 +186,18 @@ class ParkingAreaWidget extends StatelessWidget {
                   const SizedBox(
                     height: 5,
                   ),
-                  SizedBox(
+                  Container(
+                    decoration: BoxDecoration(
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Color.fromARGB(74, 0, 0, 0),
+                          blurRadius: 5,
+                          offset: Offset(-6, 6),
+                        )
+                      ],
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.white,
+                    ),
                     width: 80,
                     height: 30,
                     child: FloatingActionButton(
@@ -186,10 +210,13 @@ class ParkingAreaWidget extends StatelessWidget {
                                   ); */
                       },
                       backgroundColor: Colors.black,
-                      child: const Text('view',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold)),
+                      child: const Text(
+                        'view',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                   )
                 ],
