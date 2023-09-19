@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sa_yolo_ng/model/parking_area.dart';
-import 'package:sa_yolo_ng/widgets/car_occupancy.dart';
 import 'package:sa_yolo_ng/widgets/car_occupancy_horizontal.dart';
 
 class DolseGarciaHall2 extends ConsumerWidget {

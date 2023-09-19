@@ -25,6 +25,14 @@ class CarOccupiedHorizontal extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            Text(
+              '$number',
+              style: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+            ),
             SizedBox(
               width: 90,
               height: 90,
@@ -34,14 +42,6 @@ class CarOccupiedHorizontal extends StatelessWidget {
                   'assets/images/car-icon-vertical.png',
                   fit: BoxFit.contain,
                 ),
-              ),
-            ),
-            Text(
-              '$number',
-              style: const TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
               ),
             ),
           ],
@@ -84,11 +84,11 @@ class CarEmptyHorizontal extends StatelessWidget {
   }
 }
 
-class CarOccupancyHorizontal extends StatelessWidget {
+class CarOccupancyHorizontalRight extends StatelessWidget {
   final int number;
   final int spot;
 
-  const CarOccupancyHorizontal({
+  const CarOccupancyHorizontalRight({
     super.key,
     required this.number,
     required this.spot,
