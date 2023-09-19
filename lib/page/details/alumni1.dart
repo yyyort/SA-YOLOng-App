@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sa_yolo_ng/model/parking_area.dart';
+import 'package:sa_yolo_ng/page/practice.dart';
 import 'package:sa_yolo_ng/widgets/car_occupancy.dart';
 import 'package:sa_yolo_ng/widgets/car_occupancy_horizontal.dart';
 
@@ -13,6 +14,15 @@ class AlumniHall1 extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () => Navigator.pop(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const ParkingAreas(),
+            ),
+          ),
+        ),
         title: const Text(
           'Alumni Hall 1',
           style: TextStyle(

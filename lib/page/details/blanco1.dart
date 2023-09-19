@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sa_yolo_ng/model/parking_area.dart';
-import 'package:sa_yolo_ng/widgets/car_occupancy.dart';
 import 'package:sa_yolo_ng/widgets/car_occupancy_horizontal.dart';
+import 'package:sa_yolo_ng/widgets/car_occupancy_horizontal_right.dart';
 
 class BlancoHall1 extends ConsumerWidget {
   const BlancoHall1({super.key});
@@ -37,7 +37,7 @@ class BlancoHall1 extends ConsumerWidget {
                       Column(
                         children: [
                           for (var i = 0; i < data.spots.length; i++)
-                            CarOccupancyHorizontal(
+                            CarOccupancyHorizontalRight(
                                 number: i + 1, spot: data.spots[i])
                         ],
                       ),
