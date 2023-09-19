@@ -43,15 +43,15 @@ class AlumniHall1 extends ConsumerWidget {
                         )
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      for (var i = 0; i < data.spots1!.length; i++)
+                      for (var i = 0; i < data.spots1.length; i++)
                         CarOccupancyHorizontal(
-                            number: i + 1, spot: data.spots1?[i])
+                            number: i + 6, spot: data.spots1[i])
                     ],
                   )
                 ],

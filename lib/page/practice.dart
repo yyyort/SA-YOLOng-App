@@ -2,6 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sa_yolo_ng/model/parking_area.dart';
 import 'package:sa_yolo_ng/page/details/alumni1.dart';
+import 'package:sa_yolo_ng/page/details/alumni2.dart';
+import 'package:sa_yolo_ng/page/details/alumni3.dart';
+import 'package:sa_yolo_ng/page/details/blanco1.dart';
+import 'package:sa_yolo_ng/page/details/blanco2.dart';
+import 'package:sa_yolo_ng/page/details/dolce_garcia1.dart';
+import 'package:sa_yolo_ng/page/details/dolce_garcia2.dart';
+import 'package:sa_yolo_ng/page/details/gamboa.dart';
 
 class ParkingAreas extends ConsumerStatefulWidget {
   const ParkingAreas({super.key});
@@ -214,13 +221,69 @@ class ParkingAreaWidget extends StatelessWidget {
                                   )),
                         ); */
 
-                        if (location == 'Alumni Hall 1') {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const AlumniHall1()),
-                          );
-                        } else {}
+                        switch (location) {
+                          case 'Alumni 1':
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const AlumniHall1()),
+                            );
+                            break;
+                          case 'Alumni 2':
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const AlumniHall2()),
+                            );
+                            break;
+                          case 'Alumni 3':
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const AlumniHall3()),
+                            );
+                            break;
+                          case 'Blanco 1':
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const BlancoHall1()),
+                            );
+                            break;
+                          case 'Blanco 2':
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const BlancoHall2()),
+                            );
+                            break;
+                          case 'Dolse Garcia 1':
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const DolseGarciaHall1()),
+                            );
+                            break;
+                          case 'Dolse Garcia 2':
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const DolseGarciaHall2()),
+                            );
+                            break;
+                          case 'Gamboa Hall':
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const GamboaHall()),
+                            );
+                            break;
+
+                          default:
+                            {}
+                        }
                       },
                       backgroundColor: Colors.black,
                       child: const Text(

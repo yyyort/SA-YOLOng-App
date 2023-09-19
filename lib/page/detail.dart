@@ -12,7 +12,7 @@ class DetailPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final parkingPlace = ref.watch(getParkingAreasStream(location));
+    final parkingPlace = ref.watch(alumniStream1);
 
     return Scaffold(
       appBar: AppBar(

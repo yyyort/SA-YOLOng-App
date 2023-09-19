@@ -7,7 +7,7 @@ class CarOccupiedHorizontal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 120,
+      width: 130,
       height: 60,
       decoration: const BoxDecoration(
           gradient: LinearGradient(
