@@ -145,7 +145,7 @@ class ParkingAreaWidget extends StatelessWidget {
   colorPicker<Color>(int availableSpots) {
     if (availableSpots >= 5) {
       return Colors.green[400];
-    } else if (availableSpots >= 2) {
+    } else if (availableSpots >= 1) {
       return Colors.yellowAccent;
     } else {
       return Colors.redAccent;
@@ -212,6 +212,7 @@ class ParkingAreaWidget extends StatelessWidget {
                     width: 80,
                     height: 30,
                     child: FloatingActionButton(
+                      heroTag: null,
                       onPressed: () {
                         /* Navigator.push(
                           context,

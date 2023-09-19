@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class CarOccupiedHorizontal extends StatelessWidget {
+class CarOccupiedHorizontalRight extends StatelessWidget {
   final int number;
-  const CarOccupiedHorizontal({super.key, required this.number});
+  const CarOccupiedHorizontalRight({super.key, required this.number});
 
   @override
   Widget build(BuildContext context) {
@@ -11,17 +11,17 @@ class CarOccupiedHorizontal extends StatelessWidget {
       height: 60,
       decoration: const BoxDecoration(
           gradient: LinearGradient(
-            begin: Alignment(1.0, 0.0),
-            end: Alignment(-1.0, 0.0),
+            begin: Alignment(-1.0, 0.0),
+            end: Alignment(1.0, 0.0),
             colors: [
               Colors.red,
               Colors.redAccent,
               Colors.white,
             ],
           ),
-          borderRadius: BorderRadius.horizontal(right: Radius.circular(10))),
+          borderRadius: BorderRadius.horizontal(left: Radius.circular(10))),
       child: Container(
-        padding: const EdgeInsets.only(right: 10),
+        padding: const EdgeInsets.only(left: 10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -37,7 +37,7 @@ class CarOccupiedHorizontal extends StatelessWidget {
               width: 90,
               height: 90,
               child: RotatedBox(
-                quarterTurns: 1,
+                quarterTurns: 3,
                 child: Image.asset(
                   'assets/images/car-icon-vertical.png',
                   fit: BoxFit.contain,
@@ -51,32 +51,44 @@ class CarOccupiedHorizontal extends StatelessWidget {
   }
 }
 
-class CarEmptyHorizontal extends StatelessWidget {
+class CarEmptyHorizontalRight extends StatelessWidget {
   final int number;
-  const CarEmptyHorizontal({super.key, required this.number});
+  const CarEmptyHorizontalRight({super.key, required this.number});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 120,
-      height: 50,
+      width: 130,
+      height: 60,
       decoration: const BoxDecoration(
-          gradient: LinearGradient(
-        begin: Alignment(1.0, 0.0),
-        end: Alignment(-1.0, 0.0),
-        colors: [
-          Colors.green,
-          Colors.greenAccent,
-          Colors.white,
-        ],
-      )),
+        gradient: LinearGradient(
+          begin: Alignment(-1.0, 0.0),
+          end: Alignment(1.0, 0.0),
+          colors: [
+            Colors.green,
+            Colors.greenAccent,
+            Colors.white,
+          ],
+        ),
+        borderRadius: BorderRadius.horizontal(
+          left: Radius.circular(
+            10,
+          ),
+        ),
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            '$number',
-            style: const TextStyle(
-                color: Colors.white, fontWeight: FontWeight.bold),
+          Padding(
+            padding: const EdgeInsets.only(left: 10.0),
+            child: Text(
+              '$number',
+              style: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+            ),
           ),
         ],
       ),
@@ -99,14 +111,14 @@ class CarOccupancyHorizontalRight extends StatelessWidget {
     if (spot >= 1) {
       return Container(
         margin: const EdgeInsets.all(5),
-        child: CarOccupiedHorizontal(
+        child: CarOccupiedHorizontalRight(
           number: number,
         ),
       );
     } else {
       return Container(
         margin: const EdgeInsets.all(5),
-        child: CarEmptyHorizontal(
+        child: CarEmptyHorizontalRight(
           number: number,
         ),
       );

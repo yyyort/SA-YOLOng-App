@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sa_yolo_ng/model/parking_area.dart';
+import 'package:sa_yolo_ng/widgets/car_occupancy.dart';
 import 'package:sa_yolo_ng/widgets/car_occupancy_horizontal.dart';
 
 class GamboaHall extends ConsumerWidget {
@@ -8,7 +9,7 @@ class GamboaHall extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final stream = ref.watch(dolceGarciaStream1);
+    final stream = ref.watch(gamboaStream1);
 
     return Scaffold(
       appBar: AppBar(
@@ -30,24 +31,25 @@ class GamboaHall extends ConsumerWidget {
                     style: const TextStyle(
                         fontWeight: FontWeight.w600, fontSize: 20),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  Column(
                     children: [
-                      Column(
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           for (var i = 0; i < data.spots.length; i++)
-                            CarOccupancyHorizontal(
-                                number: i + 1, spot: data.spots[i])
+                            CarContainer(number: i + 1, spot: data.spots[i])
                         ],
                       ),
                       const SizedBox(
                         height: 20,
                       ),
-                      Column(
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           for (var i = 0; i < data.spots1.length; i++)
-                            CarOccupancyHorizontal(
-                                number: i + 4, spot: data.spots1[i])
+                            CarContainer(number: i + 4, spot: data.spots1[i])
                         ],
                       ),
                     ],

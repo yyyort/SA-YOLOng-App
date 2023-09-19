@@ -58,27 +58,36 @@ class CarEmptyHorizontal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 120,
-      height: 50,
+      width: 130,
+      height: 60,
       decoration: const BoxDecoration(
-          gradient: LinearGradient(
-        begin: Alignment(1.0, 0.0),
-        end: Alignment(-1.0, 0.0),
-        colors: [
-          Colors.green,
-          Colors.greenAccent,
-          Colors.white,
-        ],
-      )),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            '$number',
-            style: const TextStyle(
-                color: Colors.white, fontWeight: FontWeight.bold),
-          ),
-        ],
+        gradient: LinearGradient(
+          begin: Alignment(1.0, 0.0),
+          end: Alignment(-1.0, 0.0),
+          colors: [
+            Colors.green,
+            Colors.greenAccent,
+            Colors.white,
+          ],
+        ),
+        borderRadius: BorderRadius.horizontal(
+          right: Radius.circular(10),
+        ),
+      ),
+      child: Container(
+        padding: const EdgeInsets.only(right: 10.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Text(
+              '$number',
+              style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20),
+            ),
+          ],
+        ),
       ),
     );
   }
