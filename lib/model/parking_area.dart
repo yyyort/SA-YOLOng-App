@@ -36,6 +36,42 @@ class ParkingArea {
 /* 
 init firestore call into a ParkingArea type
  */
+
+/* all parking place */
+final parkingHalls = StreamProvider<List<ParkingArea>>((ref) {
+  return FirebaseFirestore.instance
+      .collection('parking_area')
+      .orderBy('available_spots', descending: true)
+      .snapshots()
+      .map((event) =>
+          event.docs.map((e) => ParkingArea.fromFirestore(e.data())).toList());
+});
+
+/* alumni */
+
+StreamProvider<ParkingArea> getParkingAreasStream(String location) {
+  return StreamProvider<ParkingArea>((ref) {
+    return firestore
+        .collection('parking_area')
+        .doc(location)
+        .snapshots()
+        .map((snapshot) => ParkingArea.fromFirestore(snapshot.data()!));
+  });
+}
+
+final alumniStream1 = StreamProvider<ParkingArea>((ref) {
+  return FirebaseFirestore.instance
+      .collection('parking_area')
+      .doc('alumni_hall_1')
+      .snapshots()
+      .map((event) => ParkingArea.fromFirestore(event.data()!));
+});
+
+/* final AlumniStream1 = getParkingAreasStream('alumni_hall_1'); */
+
+
+
+/* 
 final parkingModel = FirebaseFirestore.instance
     .collection('parking_area')
     .withConverter<ParkingArea>(
@@ -53,103 +89,4 @@ final parkingModelStream = FirebaseFirestore.instance
       toFirestore: (parkingArea, _) => parkingArea.toFirestore(),
     )
     .snapshots();
-
-final parkingAreaProvider = StreamProvider<ParkingArea>(
-  (ref) {
-    return FirebaseFirestore.instance
-        .collection('parking_area')
-        .doc('alumni_hall')
-        .snapshots()
-        .map((snapshot) => ParkingArea.fromFirestore(snapshot.data()!));
-  },
-);
-
-final parkingHalls = StreamProvider<List<ParkingArea>>((ref) {
-  return FirebaseFirestore.instance
-      .collection('parking_area')
-      .orderBy('available_spots', descending: true)
-      .snapshots()
-      .map((event) =>
-          event.docs.map((e) => ParkingArea.fromFirestore(e.data())).toList());
-});
-
-/* Stream<QuerySnapshot<ParkingArea>> getParkingAreas() {
-  final reference = firestore.collection('parking_area').withConverter(
-        fromFirestore: (snapshot, _) =>
-            ParkingArea.fromFirestore(snapshot.data()!),
-        toFirestore: (parkingArea, _) => parkingArea.toFirestore(),
-      );
-
-  return reference.snapshots();
-} */
-
-
-
-/* Stream<QuerySnapshot<User>> getUsers() {
-  final reference = db.collection('user').withConverter(
-    fromFirestore: User.fromFirestore,
-    toFirestore: (User user, _) => user.toFirestore(),
-  );
-
-  return reference.snapshots();
-} */
-
-/* final moviesRef = FirebaseFirestore.instance.collection('movies').withConverter<Movie>(
-      fromFirestore: (snapshot, _) => Movie.fromJson(snapshot.data()!),
-      toFirestore: (movie, _) => movie.toJson(),
-    ); */
-/* final model = firebasefirestore.instance
-      .collection('movies')
-      .doc()
-      .withconverter<movie>(
-    fromfirestore: (snapshot, _) => movie.fromjson(snapshot.data()!),
-    tofirestore: (movie, _) => movie.tojson(),
-  ); */
-
-/* class Movie {
-  Movie({required this.title, required this.genre});
-
-  Movie.fromJson(Map<String, Object?> json)
-    : this(
-        title: json['title']! as String,
-        genre: json['genre']! as String,
-      );
-
-  final String title;
-  final String genre;
-
-  Map<String, Object?> toJson() {
-    return {
-      'title': title,
-      'genre': genre,
-    };
-  }
-}
- */
-
-
-/* ParkingArea parkingArea =
-    ParkingArea(location: 'asdfsdf', availableSpots: 1, spots: [1, 2, 3]);
-
-final querySnapshot = FirebaseFirestore.instance
-    .collection('testdata')
-    .get()
-    .then((QuerySnapshot snapshot) {
-  return snapshot.docs.map((e) => e.data()).toList();
-});
-
-final parkingSnapshot = FirebaseFirestore.instance
-    .collection('parking_area')
-    .doc('alumni_hall')
-    .snapshots()
-    .map((event) => 
-      data = event */
-    /* print(event.data()) */
-/* Movie movie42 = await moviesRef.doc('42').get().then((snapshot) => snapshot.data()!); */
-
-/* 
-final moviesRef = FirebaseFirestore.instance.collection('movies').withConverter<Movie>(
-      fromFirestore: (snapshot, _) => Movie.fromJson(snapshot.data()!),
-      toFirestore: (movie, _) => movie.toJson(),
-    );
  */

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sa_yolo_ng/model/parking_area.dart';
+import 'package:sa_yolo_ng/page/details/alumni1.dart';
 
 class ParkingAreas extends ConsumerStatefulWidget {
   const ParkingAreas({super.key});
@@ -96,6 +97,7 @@ class Practice extends ConsumerWidget {
                     location: area[index].location,
                     availableSpots: area[index].availableSpots,
                     img: area[index].img,
+                    spots: area[index].spots,
                   ),
                 );
 
@@ -123,12 +125,14 @@ class ParkingAreaWidget extends StatelessWidget {
   final String location;
   final int availableSpots;
   final String img;
+  final List<dynamic> spots;
 
   const ParkingAreaWidget({
     super.key,
     required this.location,
     required this.availableSpots,
     required this.img,
+    required this.spots,
   });
 
   colorPicker<Color>(int availableSpots) {
@@ -203,11 +207,20 @@ class ParkingAreaWidget extends StatelessWidget {
                     child: FloatingActionButton(
                       onPressed: () {
                         /* Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => DetailPages(
-                                            loc: parkingArea, position: position)),
-                                  ); */
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => DetailPage(
+                                    location: id,
+                                  )),
+                        ); */
+
+                        if (location == 'Alumni Hall 1') {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const AlumniHall1()),
+                          );
+                        } else {}
                       },
                       backgroundColor: Colors.black,
                       child: const Text(
