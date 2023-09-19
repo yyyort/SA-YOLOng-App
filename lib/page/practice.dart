@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sa_yolo_ng/model/parking_area.dart';
+import 'package:sa_yolo_ng/page/details/alumni1.dart';
+import 'package:sa_yolo_ng/page/details/alumni2.dart';
+import 'package:sa_yolo_ng/page/details/alumni3.dart';
+import 'package:sa_yolo_ng/page/details/blanco1.dart';
+import 'package:sa_yolo_ng/page/details/blanco2.dart';
+import 'package:sa_yolo_ng/page/details/dolce_garcia1.dart';
+import 'package:sa_yolo_ng/page/details/dolce_garcia2.dart';
+import 'package:sa_yolo_ng/page/details/gamboa.dart';
 
 class ParkingAreas extends ConsumerStatefulWidget {
   const ParkingAreas({super.key});
@@ -32,17 +40,22 @@ class _ParkingAreasState extends ConsumerState<ParkingAreas> {
     return Scaffold(
       body: Column(
         children: [
-          TextField(
-            onChanged: ((value) => _runInput(value)),
-            decoration: const InputDecoration(
-              hintText: 'Search',
-              prefixIcon: Icon(Icons.search),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(25)),
+          Container(
+            padding: const EdgeInsets.only(left: 30, right: 30),
+            margin: const EdgeInsets.only(top: 20, bottom: 10),
+            height: 35,
+            child: TextField(
+              onChanged: ((value) => _runInput(value)),
+              decoration: const InputDecoration(
+                contentPadding: EdgeInsets.all(5),
+                hintText: 'Search',
+                prefixIcon: Icon(Icons.search),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                ),
               ),
             ),
           ),
-          Text(input),
           Practice(
             input: input,
           ),
@@ -67,32 +80,41 @@ class Practice extends ConsumerWidget {
           return element.location.toLowerCase().contains(input.toLowerCase());
         }).toList();
         return Expanded(
-          child: GridView.builder(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisExtent: 350,
-                mainAxisSpacing: 1,
-                childAspectRatio: 2 / 2),
-            itemCount: area.length,
-            itemBuilder: (
-              context,
-              index,
-            ) {
-              return Container(
-                padding: const EdgeInsets.symmetric(horizontal: 30),
-                child: ParkingAreaWidget(
-                  location: area[index].location,
-                  availableSpots: area[index].availableSpots,
-                  img: area[index].img,
-                ),
-              );
+          child: Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/Eagle_1.png'),
+                opacity: 0.4,
+              ),
+            ),
+            child: GridView.builder(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisExtent: 350,
+                  mainAxisSpacing: 1,
+                  childAspectRatio: 2 / 2),
+              itemCount: area.length,
+              itemBuilder: (
+                context,
+                index,
+              ) {
+                return Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 30),
+                  child: ParkingAreaWidget(
+                    location: area[index].location,
+                    availableSpots: area[index].availableSpots,
+                    img: area[index].img,
+                    spots: area[index].spots,
+                  ),
+                );
 
-              /*  ParkingAreaWidget(
-                    location: data[index].location,
-                    availableSpots: data[index].availableSpots,
-                    img: data[index].img,
-                  ); */
-            },
+                /*  ParkingAreaWidget(
+                      location: data[index].location,
+                      availableSpots: data[index].availableSpots,
+                      img: data[index].img,
+                    ); */
+              },
+            ),
           ),
         );
       },
@@ -110,21 +132,23 @@ class ParkingAreaWidget extends StatelessWidget {
   final String location;
   final int availableSpots;
   final String img;
+  final List<dynamic> spots;
 
   const ParkingAreaWidget({
     super.key,
     required this.location,
     required this.availableSpots,
     required this.img,
+    required this.spots,
   });
 
   colorPicker<Color>(int availableSpots) {
     if (availableSpots >= 5) {
-      return Colors.green;
+      return Colors.green[400];
     } else if (availableSpots >= 2) {
-      return Colors.yellow;
+      return Colors.yellowAccent;
     } else {
-      return Colors.red;
+      return Colors.redAccent;
     }
   }
 
@@ -137,9 +161,9 @@ class ParkingAreaWidget extends StatelessWidget {
           decoration: BoxDecoration(
               boxShadow: const [
                 BoxShadow(
-                  color: Colors.black,
+                  color: Color.fromARGB(74, 0, 0, 0),
                   blurRadius: 5,
-                  offset: Offset(-4, 6),
+                  offset: Offset(-6, 6),
                 )
               ],
               borderRadius: const BorderRadius.only(
@@ -173,23 +197,102 @@ class ParkingAreaWidget extends StatelessWidget {
                   const SizedBox(
                     height: 5,
                   ),
-                  SizedBox(
+                  Container(
+                    decoration: BoxDecoration(
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Color.fromARGB(74, 0, 0, 0),
+                          blurRadius: 5,
+                          offset: Offset(-6, 6),
+                        )
+                      ],
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.white,
+                    ),
                     width: 80,
                     height: 30,
                     child: FloatingActionButton(
                       onPressed: () {
                         /* Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => DetailPages(
-                                            loc: parkingArea, position: position)),
-                                  ); */
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => DetailPage(
+                                    location: id,
+                                  )),
+                        ); */
+
+                        switch (location) {
+                          case 'Alumni 1':
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const AlumniHall1()),
+                            );
+                            break;
+                          case 'Alumni 2':
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const AlumniHall2()),
+                            );
+                            break;
+                          case 'Alumni 3':
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const AlumniHall3()),
+                            );
+                            break;
+                          case 'Blanco 1':
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const BlancoHall1()),
+                            );
+                            break;
+                          case 'Blanco 2':
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const BlancoHall2()),
+                            );
+                            break;
+                          case 'Dolse Garcia 1':
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const DolseGarciaHall1()),
+                            );
+                            break;
+                          case 'Dolse Garcia 2':
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const DolseGarciaHall2()),
+                            );
+                            break;
+                          case 'Gamboa Hall':
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const GamboaHall()),
+                            );
+                            break;
+
+                          default:
+                            {}
+                        }
                       },
                       backgroundColor: Colors.black,
-                      child: const Text('view',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold)),
+                      child: const Text(
+                        'view',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                   )
                 ],

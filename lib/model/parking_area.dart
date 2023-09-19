@@ -7,21 +7,25 @@ class ParkingArea {
   final String location;
   final int availableSpots;
   final List<dynamic> spots;
+  final List<dynamic> spots1;
   final String img;
 
   ParkingArea({
     required this.location,
     required this.availableSpots,
     required this.spots,
+    required this.spots1,
     required this.img,
   });
 
   factory ParkingArea.fromFirestore(Map<String, dynamic> json) {
     return ParkingArea(
-        location: json['location']! as String,
-        availableSpots: json['available_spots']! as int,
-        img: json['img']! as String,
-        spots: json['spots']! as List<dynamic>);
+      location: json['location']! as String,
+      availableSpots: json['available_spots']! as int,
+      img: json['img']! as String,
+      spots: json['spots']! as List<dynamic>,
+      spots1: json['spots1']! as List<dynamic>,
+    );
   }
 
   Map<String, dynamic> toFirestore() {
@@ -29,6 +33,7 @@ class ParkingArea {
       'location': location,
       'available_spots': availableSpots,
       'spots': spots,
+      'spots1': spots1
     };
   }
 }
@@ -36,34 +41,8 @@ class ParkingArea {
 /* 
 init firestore call into a ParkingArea type
  */
-final parkingModel = FirebaseFirestore.instance
-    .collection('parking_area')
-    .withConverter<ParkingArea>(
-      fromFirestore: (snapshot, _) =>
-          ParkingArea.fromFirestore(snapshot.data()!),
-      toFirestore: (parkingArea, _) => parkingArea.toFirestore(),
-    );
 
-final parkingModelStream = FirebaseFirestore.instance
-    .collection('parking_area')
-    .doc('alumni_hall')
-    .withConverter<ParkingArea>(
-      fromFirestore: (snapshot, _) =>
-          ParkingArea.fromFirestore(snapshot.data()!),
-      toFirestore: (parkingArea, _) => parkingArea.toFirestore(),
-    )
-    .snapshots();
-
-final parkingAreaProvider = StreamProvider<ParkingArea>(
-  (ref) {
-    return FirebaseFirestore.instance
-        .collection('parking_area')
-        .doc('alumni_hall')
-        .snapshots()
-        .map((snapshot) => ParkingArea.fromFirestore(snapshot.data()!));
-  },
-);
-
+/* all parking place */
 final parkingHalls = StreamProvider<List<ParkingArea>>((ref) {
   return FirebaseFirestore.instance
       .collection('parking_area')
@@ -73,83 +52,77 @@ final parkingHalls = StreamProvider<List<ParkingArea>>((ref) {
           event.docs.map((e) => ParkingArea.fromFirestore(e.data())).toList());
 });
 
-/* Stream<QuerySnapshot<ParkingArea>> getParkingAreas() {
-  final reference = firestore.collection('parking_area').withConverter(
-        fromFirestore: (snapshot, _) =>
-            ParkingArea.fromFirestore(snapshot.data()!),
-        toFirestore: (parkingArea, _) => parkingArea.toFirestore(),
-      );
-
-  return reference.snapshots();
-} */
-
-
-
-/* Stream<QuerySnapshot<User>> getUsers() {
-  final reference = db.collection('user').withConverter(
-    fromFirestore: User.fromFirestore,
-    toFirestore: (User user, _) => user.toFirestore(),
-  );
-
-  return reference.snapshots();
-} */
-
-/* final moviesRef = FirebaseFirestore.instance.collection('movies').withConverter<Movie>(
-      fromFirestore: (snapshot, _) => Movie.fromJson(snapshot.data()!),
-      toFirestore: (movie, _) => movie.toJson(),
-    ); */
-/* final model = firebasefirestore.instance
-      .collection('movies')
-      .doc()
-      .withconverter<movie>(
-    fromfirestore: (snapshot, _) => movie.fromjson(snapshot.data()!),
-    tofirestore: (movie, _) => movie.tojson(),
-  ); */
-
-/* class Movie {
-  Movie({required this.title, required this.genre});
-
-  Movie.fromJson(Map<String, Object?> json)
-    : this(
-        title: json['title']! as String,
-        genre: json['genre']! as String,
-      );
-
-  final String title;
-  final String genre;
-
-  Map<String, Object?> toJson() {
-    return {
-      'title': title,
-      'genre': genre,
-    };
-  }
-}
- */
-
-
-/* ParkingArea parkingArea =
-    ParkingArea(location: 'asdfsdf', availableSpots: 1, spots: [1, 2, 3]);
-
-final querySnapshot = FirebaseFirestore.instance
-    .collection('testdata')
-    .get()
-    .then((QuerySnapshot snapshot) {
-  return snapshot.docs.map((e) => e.data()).toList();
+final alumniStream1 = StreamProvider<ParkingArea>((ref) {
+  return FirebaseFirestore.instance
+      .collection('parking_area')
+      .doc('alumni_hall_1')
+      .snapshots()
+      .map((event) => ParkingArea.fromFirestore(event.data()!));
 });
 
-final parkingSnapshot = FirebaseFirestore.instance
-    .collection('parking_area')
-    .doc('alumni_hall')
-    .snapshots()
-    .map((event) => 
-      data = event */
-    /* print(event.data()) */
-/* Movie movie42 = await moviesRef.doc('42').get().then((snapshot) => snapshot.data()!); */
+final alumniStream2 = StreamProvider<ParkingArea>((ref) {
+  return FirebaseFirestore.instance
+      .collection('parking_area')
+      .doc('alumni_hall_2')
+      .snapshots()
+      .map((event) => ParkingArea.fromFirestore(event.data()!));
+});
+
+final alumniStream3 = StreamProvider<ParkingArea>((ref) {
+  return FirebaseFirestore.instance
+      .collection('parking_area')
+      .doc('alumni_hall_3')
+      .snapshots()
+      .map((event) => ParkingArea.fromFirestore(event.data()!));
+});
 
 /* 
-final moviesRef = FirebaseFirestore.instance.collection('movies').withConverter<Movie>(
-      fromFirestore: (snapshot, _) => Movie.fromJson(snapshot.data()!),
-      toFirestore: (movie, _) => movie.toJson(),
-    );
+blanco
+*/
+
+final blancoStream1 = StreamProvider<ParkingArea>((ref) {
+  return FirebaseFirestore.instance
+      .collection('parking_area')
+      .doc('blanco_hall_1')
+      .snapshots()
+      .map((event) => ParkingArea.fromFirestore(event.data()!));
+});
+
+final blancoStream2 = StreamProvider<ParkingArea>((ref) {
+  return FirebaseFirestore.instance
+      .collection('parking_area')
+      .doc('blanco_hall_2')
+      .snapshots()
+      .map((event) => ParkingArea.fromFirestore(event.data()!));
+});
+
+/* 
+dolse garcia
  */
+
+final dolceGarciaStream1 = StreamProvider<ParkingArea>((ref) {
+  return FirebaseFirestore.instance
+      .collection('parking_area')
+      .doc('dolse_garcia_hall_1')
+      .snapshots()
+      .map((event) => ParkingArea.fromFirestore(event.data()!));
+});
+
+final dolceGarciaStream2 = StreamProvider<ParkingArea>((ref) {
+  return FirebaseFirestore.instance
+      .collection('parking_area')
+      .doc('dolse_garcia_hall_2')
+      .snapshots()
+      .map((event) => ParkingArea.fromFirestore(event.data()!));
+});
+
+/* 
+gamboa
+ */
+final gamboaStream1 = StreamProvider<ParkingArea>((ref) {
+  return FirebaseFirestore.instance
+      .collection('parking_area')
+      .doc('gamboa_hall')
+      .snapshots()
+      .map((event) => ParkingArea.fromFirestore(event.data()!));
+});
