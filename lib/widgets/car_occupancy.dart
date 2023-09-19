@@ -11,18 +11,19 @@ class CarContainerOccupied extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 80,
+      width: 60,
       height: 110,
       decoration: const BoxDecoration(
           gradient: LinearGradient(
-        begin: Alignment(0.0, -1.0),
-        end: Alignment(0.0, 1.0),
-        colors: [
-          Colors.red,
-          Colors.redAccent,
-          Colors.white,
-        ],
-      )),
+            begin: Alignment(0.0, -1.0),
+            end: Alignment(0.0, 1.0),
+            colors: [
+              Colors.red,
+              Colors.redAccent,
+              Colors.white,
+            ],
+          ),
+          borderRadius: BorderRadius.vertical(top: Radius.circular(10))),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -32,11 +33,11 @@ class CarContainerOccupied extends StatelessWidget {
                 color: Colors.white, fontWeight: FontWeight.bold),
           ),
           SizedBox(
-            width: 80,
-            height: 80,
+            width: 60,
+            height: 90,
             child: Image.asset(
               'assets/images/car-icon-vertical.png',
-              fit: BoxFit.contain,
+              fit: BoxFit.cover,
             ),
           ),
         ],

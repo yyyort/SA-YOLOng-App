@@ -7,12 +7,14 @@ class ParkingArea {
   final String location;
   final int availableSpots;
   final List<dynamic> spots;
+  final List<dynamic>? spots1;
   final String img;
 
   ParkingArea({
     required this.location,
     required this.availableSpots,
     required this.spots,
+    required this.spots1,
     required this.img,
   });
 
@@ -21,7 +23,8 @@ class ParkingArea {
         location: json['location']! as String,
         availableSpots: json['available_spots']! as int,
         img: json['img']! as String,
-        spots: json['spots']! as List<dynamic>);
+        spots: json['spots']! as List<dynamic>,
+        spots1: json['spots1']! as List<dynamic>? ?? []);
   }
 
   Map<String, dynamic> toFirestore() {
@@ -29,6 +32,7 @@ class ParkingArea {
       'location': location,
       'available_spots': availableSpots,
       'spots': spots,
+      'spots1': spots1
     };
   }
 }
