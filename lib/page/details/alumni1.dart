@@ -14,24 +14,24 @@ class AlumniHall1 extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.pop(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const ParkingAreas(),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset('assets/images/usa_logo.png', height: 40, width: 40),
+            const Text(
+              'Alumni Hall 1',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-        ),
-        title: const Text(
-          'Alumni Hall 1',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
+          ],
         ),
       ),
       body: Column(
         children: [
+          const SizedBox(
+            height: 40,
+          ),
           stream.when(
             data: (data) {
               return Column(
@@ -41,7 +41,7 @@ class AlumniHall1 extends ConsumerWidget {
                   Text(
                     'Available: ${data.availableSpots}',
                     style: const TextStyle(
-                        fontWeight: FontWeight.w600, fontSize: 20),
+                        fontWeight: FontWeight.w600, fontSize: 30),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -54,7 +54,7 @@ class AlumniHall1 extends ConsumerWidget {
                     ],
                   ),
                   const SizedBox(
-                    height: 20,
+                    height: 200,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,

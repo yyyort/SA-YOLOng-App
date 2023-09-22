@@ -10,17 +10,18 @@ import 'package:sa_yolo_ng/page/details/dolce_garcia1.dart';
 import 'package:sa_yolo_ng/page/details/dolce_garcia2.dart';
 import 'package:sa_yolo_ng/page/details/gamboa.dart';
 
-class ParkingAreas extends ConsumerStatefulWidget {
-  const ParkingAreas({super.key});
+class Homepage extends ConsumerStatefulWidget {
+  const Homepage({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _ParkingAreasState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _HomepageState();
 }
 
-class _ParkingAreasState extends ConsumerState<ParkingAreas> {
+class _HomepageState extends ConsumerState<Homepage> {
   String search = '';
   String input = '';
 
+  //default state
   @override
   void initState() {
     super.initState();
@@ -29,6 +30,7 @@ class _ParkingAreasState extends ConsumerState<ParkingAreas> {
     input = search;
   }
 
+  //changing state
   void _runInput(String searchInput) {
     setState(() {
       input = searchInput;
@@ -40,6 +42,7 @@ class _ParkingAreasState extends ConsumerState<ParkingAreas> {
     return Scaffold(
       body: Column(
         children: [
+          //search bar
           Container(
             padding: const EdgeInsets.only(left: 30, right: 30),
             margin: const EdgeInsets.only(top: 20, bottom: 10),
@@ -56,7 +59,9 @@ class _ParkingAreasState extends ConsumerState<ParkingAreas> {
               ),
             ),
           ),
-          Practice(
+
+          //list of parking areas
+          ParkingPlaces(
             input: input,
           ),
         ],
@@ -65,9 +70,10 @@ class _ParkingAreasState extends ConsumerState<ParkingAreas> {
   }
 }
 
-class Practice extends ConsumerWidget {
+//Parking Places widget
+class ParkingPlaces extends ConsumerWidget {
   final String input;
-  const Practice({super.key, required this.input});
+  const ParkingPlaces({super.key, required this.input});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -90,7 +96,7 @@ class Practice extends ConsumerWidget {
             child: GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  mainAxisExtent: 350,
+                  mainAxisExtent: 400,
                   mainAxisSpacing: 1,
                   childAspectRatio: 2 / 2),
               itemCount: area.length,
@@ -107,12 +113,6 @@ class Practice extends ConsumerWidget {
                     spots: area[index].spots,
                   ),
                 );
-
-                /*  ParkingAreaWidget(
-                      location: data[index].location,
-                      availableSpots: data[index].availableSpots,
-                      img: data[index].img,
-                    ); */
               },
             ),
           ),
@@ -142,6 +142,7 @@ class ParkingAreaWidget extends StatelessWidget {
     required this.spots,
   });
 
+  //for changing color of parking area card
   colorPicker<Color>(int availableSpots) {
     if (availableSpots >= 5) {
       return Colors.green[400];
@@ -222,6 +223,9 @@ class ParkingAreaWidget extends StatelessWidget {
                                   )),
                         ); */
 
+                        /* 
+                          routing to different pages depending on the location
+                         */
                         switch (location) {
                           case 'Alumni 1':
                             Navigator.push(
