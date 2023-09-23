@@ -13,11 +13,16 @@ class AlumniHall2 extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Alumni Hall 2',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
+        title: Row(
+          children: [
+            Image.asset('assets/images/usa_logo.png'),
+            const Text(
+              'Alumni Hall 2',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
         ),
       ),
       body: Column(
@@ -44,7 +49,7 @@ class AlumniHall2 extends ConsumerWidget {
                     ],
                   ),
                   const SizedBox(
-                    height: 20,
+                    height: 60,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,

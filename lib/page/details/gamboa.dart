@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sa_yolo_ng/model/parking_area.dart';
 import 'package:sa_yolo_ng/widgets/car_occupancy.dart';
+// ignore: unused_import
 import 'package:sa_yolo_ng/widgets/car_occupancy_horizontal.dart';
 
 class GamboaHall extends ConsumerWidget {
@@ -13,11 +14,16 @@ class GamboaHall extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Gamboa Hall',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
+        title: Row(
+          children: [
+            Image.asset('assets/images/usa_logo.png'),
+            const Text(
+              'Gamboa Hall 1',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
         ),
       ),
       body: Column(
@@ -42,7 +48,7 @@ class GamboaHall extends ConsumerWidget {
                         ],
                       ),
                       const SizedBox(
-                        height: 20,
+                        height: 60,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,

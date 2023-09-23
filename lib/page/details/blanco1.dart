@@ -13,11 +13,16 @@ class BlancoHall1 extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Blanco Hall 1',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
+        title: Row(
+          children: [
+            Image.asset('assets/images/usa_logo.png'),
+            const Text(
+              'Blanco Hall 1',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
         ),
       ),
       body: Column(
@@ -42,7 +47,7 @@ class BlancoHall1 extends ConsumerWidget {
                         ],
                       ),
                       const SizedBox(
-                        height: 20,
+                        height: 60,
                       ),
                       Column(
                         children: [
