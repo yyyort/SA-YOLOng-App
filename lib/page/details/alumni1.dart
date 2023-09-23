@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sa_yolo_ng/model/parking_area.dart';
 import 'package:sa_yolo_ng/page/Homepage.dart';
+import 'package:sa_yolo_ng/page/ref/map_images.dart';
+import 'package:sa_yolo_ng/widgets/btn_map.dart';
 import 'package:sa_yolo_ng/widgets/car_occupancy.dart';
 import 'package:sa_yolo_ng/widgets/car_occupancy_horizontal.dart';
 
@@ -71,7 +73,11 @@ class AlumniHall1 extends ConsumerWidget {
             },
             loading: () => const CircularProgressIndicator(),
             error: (error, stackTrace) => Text('Error: $error'),
-          )
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          const ToMapWidget(location: 'Alumni Hall 1')
         ],
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sa_yolo_ng/model/parking_area.dart';
+import 'package:sa_yolo_ng/widgets/btn_map.dart';
 import 'package:sa_yolo_ng/widgets/car_occupancy.dart';
 
 class BlancoHall2 extends ConsumerWidget {
@@ -14,7 +15,7 @@ class BlancoHall2 extends ConsumerWidget {
       appBar: AppBar(
         title: Row(
           children: [
-            Image.asset('assets/images/usa_logo.png'),
+            Image.asset('assets/images/usa_logo.png', height: 40, width: 40),
             const Text(
               'Blanco Hall 2',
               style: TextStyle(
@@ -47,7 +48,11 @@ class BlancoHall2 extends ConsumerWidget {
             },
             loading: () => const CircularProgressIndicator(),
             error: (error, stackTrace) => Text('Error: $error'),
-          )
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          const ToMapWidget(location: 'Blanco Hall 2')
         ],
       ),
     );
