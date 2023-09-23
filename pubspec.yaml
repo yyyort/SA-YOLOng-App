@@ -71,6 +71,7 @@ flutter:
     - assets/parking_places/alumni/
     - assets/parking_places/dolse/
     - assets/parking_places/gamboa/
+    - assets/parking_places/map/
     #- assets/parking_places/alumni/al1-1.png
   #   - images/a_dot_ham.jpeg
 
