@@ -31,10 +31,13 @@ class BlancoHall2 extends ConsumerWidget {
             data: (data) {
               return Column(
                 children: [
-                  Text(
-                    'Available: ${data.availableSpots}',
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w600, fontSize: 20),
+                  Container(
+                    margin: const EdgeInsets.only(top: 20, bottom: 20),
+                    child: Text(
+                      'Available: ${data.availableSpots}',
+                      style: const TextStyle(
+                          fontWeight: FontWeight.w600, fontSize: 30),
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -50,7 +53,7 @@ class BlancoHall2 extends ConsumerWidget {
             error: (error, stackTrace) => Text('Error: $error'),
           ),
           const SizedBox(
-            height: 20,
+            height: 40,
           ),
           const ToMapWidget(location: 'Blanco Hall 2')
         ],

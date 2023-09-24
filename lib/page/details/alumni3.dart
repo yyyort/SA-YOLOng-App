@@ -31,10 +31,13 @@ class AlumniHall3 extends ConsumerWidget {
             data: (data) {
               return Column(
                 children: [
-                  Text(
-                    'Available: ${data.availableSpots}',
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w600, fontSize: 20),
+                  Container(
+                    margin: const EdgeInsets.only(top: 20, bottom: 20),
+                    child: Text(
+                      'Available: ${data.availableSpots}',
+                      style: const TextStyle(
+                          fontWeight: FontWeight.w600, fontSize: 30),
+                    ),
                   ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -47,7 +50,7 @@ class AlumniHall3 extends ConsumerWidget {
                         ],
                       ),
                       const SizedBox(
-                        height: 60,
+                        height: 200,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,

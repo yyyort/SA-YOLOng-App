@@ -33,10 +33,13 @@ class GamboaHall extends ConsumerWidget {
             data: (data) {
               return Column(
                 children: [
-                  Text(
-                    'Available: ${data.availableSpots}',
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w600, fontSize: 20),
+                  Container(
+                    margin: const EdgeInsets.only(top: 20, bottom: 20),
+                    child: Text(
+                      'Available: ${data.availableSpots}',
+                      style: const TextStyle(
+                          fontWeight: FontWeight.w600, fontSize: 30),
+                    ),
                   ),
                   Column(
                     children: [
@@ -49,7 +52,7 @@ class GamboaHall extends ConsumerWidget {
                         ],
                       ),
                       const SizedBox(
-                        height: 60,
+                        height: 200,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -68,7 +71,7 @@ class GamboaHall extends ConsumerWidget {
             error: (error, stackTrace) => Text('Error: $error'),
           ),
           const SizedBox(
-            height: 20,
+            height: 40,
           ),
           const ToMapWidget(location: 'Gamboa Hall')
         ],

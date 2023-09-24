@@ -19,7 +19,6 @@ class AlumniHall1 extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset('assets/images/usa_logo.png', height: 40, width: 40),
             const Text(
@@ -42,10 +41,13 @@ class AlumniHall1 extends ConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(
-                    'Available: ${data.availableSpots}',
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w600, fontSize: 30),
+                  Container(
+                    margin: const EdgeInsets.only(top: 20, bottom: 20),
+                    child: Text(
+                      'Available: ${data.availableSpots}',
+                      style: const TextStyle(
+                          fontWeight: FontWeight.w600, fontSize: 30),
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -75,7 +77,7 @@ class AlumniHall1 extends ConsumerWidget {
             error: (error, stackTrace) => Text('Error: $error'),
           ),
           const SizedBox(
-            height: 20,
+            height: 40,
           ),
           const ToMapWidget(location: 'Alumni Hall 1')
         ],

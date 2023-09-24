@@ -55,6 +55,7 @@ class _HomepageState extends ConsumerState<Homepage> {
             ),
           ],
         ),
+        backgroundColor: Colors.white,
       ),
       body: Column(
         children: [
@@ -70,7 +71,9 @@ class _HomepageState extends ConsumerState<Homepage> {
                 hintText: 'Search',
                 prefixIcon: Icon(Icons.search),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(30),
+                  ),
                 ),
               ),
             ),
