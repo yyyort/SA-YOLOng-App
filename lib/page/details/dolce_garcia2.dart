@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sa_yolo_ng/model/parking_area.dart';
+import 'package:sa_yolo_ng/widgets/btn_map.dart';
 import 'package:sa_yolo_ng/widgets/car_occupancy_horizontal.dart';
 import 'package:sa_yolo_ng/widgets/car_occupancy_horizontal_right.dart';
 
@@ -15,7 +16,7 @@ class DolseGarciaHall2 extends ConsumerWidget {
       appBar: AppBar(
         title: Row(
           children: [
-            Image.asset('assets/images/usa_logo.png'),
+            Image.asset('assets/images/usa_logo.png', height: 40, width: 40),
             const Text(
               'Dolse Garcia Hall 2',
               style: TextStyle(
@@ -31,10 +32,13 @@ class DolseGarciaHall2 extends ConsumerWidget {
             data: (data) {
               return Column(
                 children: [
-                  Text(
-                    'Available: ${data.availableSpots}',
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w600, fontSize: 20),
+                  Container(
+                    margin: const EdgeInsets.only(top: 20, bottom: 20),
+                    child: Text(
+                      'Available: ${data.availableSpots}',
+                      style: const TextStyle(
+                          fontWeight: FontWeight.w600, fontSize: 30),
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -63,7 +67,11 @@ class DolseGarciaHall2 extends ConsumerWidget {
             },
             loading: () => const CircularProgressIndicator(),
             error: (error, stackTrace) => Text('Error: $error'),
-          )
+          ),
+          const SizedBox(
+            height: 40,
+          ),
+          const ToMapWidget(location: 'Dolse Garcia Hall 2')
         ],
       ),
     );

@@ -42,12 +42,27 @@ class _HomepageState extends ConsumerState<Homepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset('assets/images/usa_logo.png', height: 40, width: 40),
+            const Text(
+              'Sa Yolo\'Ng',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
+        backgroundColor: Colors.white,
+      ),
       body: Column(
         children: [
           //search bar
           Container(
             padding: const EdgeInsets.only(left: 30, right: 30),
-            margin: const EdgeInsets.only(top: 20, bottom: 10),
+            margin: const EdgeInsets.only(bottom: 10),
             height: 35,
             child: TextField(
               onChanged: ((value) => _runInput(value)),
@@ -56,7 +71,9 @@ class _HomepageState extends ConsumerState<Homepage> {
                 hintText: 'Search',
                 prefixIcon: Icon(Icons.search),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(30),
+                  ),
                 ),
               ),
             ),

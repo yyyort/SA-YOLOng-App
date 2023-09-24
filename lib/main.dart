@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sa_yolo_ng/page/Homepage.dart';
+import 'package:sa_yolo_ng/page/details/alumni1.dart';
 import 'package:sa_yolo_ng/page/ref/map_images.dart';
+import 'package:sa_yolo_ng/page/ref/whole_map.dart';
 import 'package:sa_yolo_ng/service/firebase_options.dart';
 
 Future<void> main() async {
@@ -39,12 +41,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
         useMaterial3: true,
       ),
-      home: const ImageCaro(),
+      home: const Homepage(),
     );
     /*   */
   }
