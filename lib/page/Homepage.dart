@@ -85,6 +85,25 @@ class _HomepageState extends ConsumerState<Homepage> {
           ),
         ],
       ),
+
+      //bottom navigation bar
+      bottomNavigationBar: Container(
+        child: BottomNavigationBar(
+          currentIndex: 0,
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+              backgroundColor: Colors.black,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: 'Profile',
+              backgroundColor: Colors.black,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
