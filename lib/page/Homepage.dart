@@ -11,6 +11,8 @@ import 'package:sa_yolo_ng/page/details/blanco2.dart';
 import 'package:sa_yolo_ng/page/details/dolce_garcia1.dart';
 import 'package:sa_yolo_ng/page/details/dolce_garcia2.dart';
 import 'package:sa_yolo_ng/page/details/gamboa.dart';
+import 'package:sa_yolo_ng/page/whole_map.dart';
+import 'package:sa_yolo_ng/page/faq.dart';
 
 class Homepage extends ConsumerStatefulWidget {
   const Homepage({super.key});
@@ -22,6 +24,29 @@ class Homepage extends ConsumerStatefulWidget {
 class _HomepageState extends ConsumerState<Homepage> {
   String search = '';
   String input = '';
+  int currentPageIndex = 0;
+
+  final List<NavigationDestination> _destinations = const [
+    NavigationDestination(
+      icon: Icon(Icons.home),
+      label: 'Home',
+    ),
+    NavigationDestination(
+      icon: Icon(Icons.map_outlined),
+      label: 'Map',
+    ),
+    NavigationDestination(
+      icon: Icon(Icons.message_outlined),
+      label: 'Faq',
+    ),
+  ];
+
+  final List<Widget> _pages = [
+    //homepage
+    const Homepage(),
+    const WholeMap(),
+    const Faq(),
+  ];
 
   //default state
   @override
@@ -57,52 +82,48 @@ class _HomepageState extends ConsumerState<Homepage> {
         ),
         backgroundColor: Colors.white,
       ),
-      body: Column(
-        children: [
-          //search bar
-          Container(
-            padding: const EdgeInsets.only(left: 30, right: 30),
-            margin: const EdgeInsets.only(bottom: 10),
-            height: 35,
-            child: TextField(
-              onChanged: ((value) => _runInput(value)),
-              decoration: const InputDecoration(
-                contentPadding: EdgeInsets.all(5),
-                hintText: 'Search',
-                prefixIcon: Icon(Icons.search),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(30),
+      body: SafeArea(
+        child: Column(
+          children: [
+            _pages[currentPageIndex],
+            //search bar
+            Container(
+              padding: const EdgeInsets.only(left: 30, right: 30),
+              margin: const EdgeInsets.only(bottom: 10),
+              height: 35,
+              child: TextField(
+                onChanged: ((value) => _runInput(value)),
+                decoration: const InputDecoration(
+                  contentPadding: EdgeInsets.all(5),
+                  hintText: 'Search',
+                  prefixIcon: Icon(Icons.search),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(30),
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
 
-          //list of parking areas
-          ParkingPlaces(
-            input: input,
-          ),
-        ],
-      ),
-
-      //bottom navigation bar
-      bottomNavigationBar: Container(
-        child: BottomNavigationBar(
-          currentIndex: 0,
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
-              backgroundColor: Colors.black,
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Profile',
-              backgroundColor: Colors.black,
+            //list of parking areas
+            ParkingPlaces(
+              input: input,
             ),
           ],
         ),
+      ),
+
+      //navigation bar page list
+
+      bottomNavigationBar: NavigationBar(
+        destinations: _destinations,
+        selectedIndex: currentPageIndex,
+        onDestinationSelected: (int index) {
+          setState(() {
+            currentPageIndex = index;
+          });
+        },
       ),
     );
   }
