@@ -9,6 +9,7 @@ import 'package:sa_yolo_ng/page/details/alumni1.dart';
 import 'package:sa_yolo_ng/page/ref/map_images.dart';
 import 'package:sa_yolo_ng/page/ref/whole_map.dart';
 import 'package:sa_yolo_ng/service/firebase_options.dart';
+import 'package:sa_yolo_ng/page/faq.dart';
 
 Future<void> main() async {
   await Firebase.initializeApp(
@@ -34,8 +35,37 @@ Future<void> main() async {
   runApp(const ProviderScope(child: MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  int currentPageIndex = 0;
+
+  final List<NavigationDestination> _destinations = const [
+    NavigationDestination(
+      icon: Icon(Icons.home),
+      label: 'Home',
+    ),
+    NavigationDestination(
+      icon: Icon(Icons.map_outlined),
+      label: 'Map',
+    ),
+    NavigationDestination(
+      icon: Icon(Icons.message_outlined),
+      label: 'Faq',
+    ),
+  ];
+
+  final List<Widget> _pages = [
+    //homepage
+    const Homepage(),
+    const WholeMap(),
+    const Faq(),
+  ];
 
   // This widget is the root of your application.
   @override
@@ -47,7 +77,35 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
         useMaterial3: true,
       ),
-      home: const Homepage(),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset('assets/images/usa_logo.png', height: 40, width: 40),
+              const Text(
+                'Sa Yolo\'Ng',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+          backgroundColor: Colors.white,
+        ),
+        body: _pages[currentPageIndex],
+        bottomNavigationBar: NavigationBar(
+          destinations: _destinations,
+          selectedIndex: currentPageIndex,
+          onDestinationSelected: (int index) {
+            setState(() {
+              currentPageIndex = index;
+            });
+          },
+        ),
+      ),
+
+      //const Homepage(),
     );
     /*   */
   }

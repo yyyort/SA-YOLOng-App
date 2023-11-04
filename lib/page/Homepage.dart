@@ -11,6 +11,8 @@ import 'package:sa_yolo_ng/page/details/blanco2.dart';
 import 'package:sa_yolo_ng/page/details/dolce_garcia1.dart';
 import 'package:sa_yolo_ng/page/details/dolce_garcia2.dart';
 import 'package:sa_yolo_ng/page/details/gamboa.dart';
+import 'package:sa_yolo_ng/page/whole_map.dart';
+import 'package:sa_yolo_ng/page/faq.dart';
 
 class Homepage extends ConsumerStatefulWidget {
   const Homepage({super.key});
@@ -22,7 +24,6 @@ class Homepage extends ConsumerStatefulWidget {
 class _HomepageState extends ConsumerState<Homepage> {
   String search = '';
   String input = '';
-
   //default state
   @override
   void initState() {
@@ -42,21 +43,6 @@ class _HomepageState extends ConsumerState<Homepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset('assets/images/usa_logo.png', height: 40, width: 40),
-            const Text(
-              'Sa Yolo\'Ng',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
-        ),
-        backgroundColor: Colors.white,
-      ),
       body: Column(
         children: [
           //search bar
@@ -84,25 +70,6 @@ class _HomepageState extends ConsumerState<Homepage> {
             input: input,
           ),
         ],
-      ),
-
-      //bottom navigation bar
-      bottomNavigationBar: Container(
-        child: BottomNavigationBar(
-          currentIndex: 0,
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
-              backgroundColor: Colors.black,
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Profile',
-              backgroundColor: Colors.black,
-            ),
-          ],
-        ),
       ),
     );
   }
