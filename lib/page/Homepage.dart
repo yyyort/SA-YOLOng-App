@@ -24,30 +24,6 @@ class Homepage extends ConsumerStatefulWidget {
 class _HomepageState extends ConsumerState<Homepage> {
   String search = '';
   String input = '';
-  int currentPageIndex = 0;
-
-  final List<NavigationDestination> _destinations = const [
-    NavigationDestination(
-      icon: Icon(Icons.home),
-      label: 'Home',
-    ),
-    NavigationDestination(
-      icon: Icon(Icons.map_outlined),
-      label: 'Map',
-    ),
-    NavigationDestination(
-      icon: Icon(Icons.message_outlined),
-      label: 'Faq',
-    ),
-  ];
-
-  final List<Widget> _pages = [
-    //homepage
-    const Homepage(),
-    const WholeMap(),
-    const Faq(),
-  ];
-
   //default state
   @override
   void initState() {
@@ -67,63 +43,33 @@ class _HomepageState extends ConsumerState<Homepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset('assets/images/usa_logo.png', height: 40, width: 40),
-            const Text(
-              'Sa Yolo\'Ng',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
-        ),
-        backgroundColor: Colors.white,
-      ),
-      body: SafeArea(
-        child: Column(
-          children: [
-            _pages[currentPageIndex],
-            //search bar
-            Container(
-              padding: const EdgeInsets.only(left: 30, right: 30),
-              margin: const EdgeInsets.only(bottom: 10),
-              height: 35,
-              child: TextField(
-                onChanged: ((value) => _runInput(value)),
-                decoration: const InputDecoration(
-                  contentPadding: EdgeInsets.all(5),
-                  hintText: 'Search',
-                  prefixIcon: Icon(Icons.search),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(30),
-                    ),
+      body: Column(
+        children: [
+          //search bar
+          Container(
+            padding: const EdgeInsets.only(left: 30, right: 30),
+            margin: const EdgeInsets.only(bottom: 10),
+            height: 35,
+            child: TextField(
+              onChanged: ((value) => _runInput(value)),
+              decoration: const InputDecoration(
+                contentPadding: EdgeInsets.all(5),
+                hintText: 'Search',
+                prefixIcon: Icon(Icons.search),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(30),
                   ),
                 ),
               ),
             ),
+          ),
 
-            //list of parking areas
-            ParkingPlaces(
-              input: input,
-            ),
-          ],
-        ),
-      ),
-
-      //navigation bar page list
-
-      bottomNavigationBar: NavigationBar(
-        destinations: _destinations,
-        selectedIndex: currentPageIndex,
-        onDestinationSelected: (int index) {
-          setState(() {
-            currentPageIndex = index;
-          });
-        },
+          //list of parking areas
+          ParkingPlaces(
+            input: input,
+          ),
+        ],
       ),
     );
   }
