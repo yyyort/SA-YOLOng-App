@@ -11,6 +11,7 @@ import 'package:sa_yolo_ng/page/details/blanco2.dart';
 import 'package:sa_yolo_ng/page/details/dolce_garcia1.dart';
 import 'package:sa_yolo_ng/page/details/dolce_garcia2.dart';
 import 'package:sa_yolo_ng/page/details/gamboa.dart';
+import 'package:sa_yolo_ng/page/ref/whole_map.dart';
 
 class Homepage extends ConsumerStatefulWidget {
   const Homepage({super.key});
@@ -22,7 +23,11 @@ class Homepage extends ConsumerStatefulWidget {
 class _HomepageState extends ConsumerState<Homepage> {
   String search = '';
   String input = '';
-
+  int index = 0;
+  final screens = const [
+    Homepage(),
+    WholeMap(),
+  ];
   //default state
   @override
   void initState() {
@@ -88,18 +93,23 @@ class _HomepageState extends ConsumerState<Homepage> {
 
       //bottom navigation bar
       bottomNavigationBar: Container(
-        child: BottomNavigationBar(
-          currentIndex: 0,
-          items: const [
-            BottomNavigationBarItem(
+        child: NavigationBar(
+          height: 60,
+          backgroundColor: Color(0xFFf1f5fb),
+          selectedIndex: index,
+          onDestinationSelected: (index) => setState(() => this.index = index),
+          destinations: const [
+            NavigationDestination(
               icon: Icon(Icons.home),
               label: 'Home',
-              backgroundColor: Colors.black,
             ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Profile',
-              backgroundColor: Colors.black,
+            NavigationDestination(
+              icon: Icon(Icons.map),
+              label: 'Map',
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.live_help),
+              label: 'Help',
             ),
           ],
         ),
