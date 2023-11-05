@@ -43,6 +43,21 @@ class _HomepageState extends ConsumerState<Homepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset('assets/images/usa_logo.png', height: 40, width: 40),
+            const Text(
+              'Sa Yolo\'Ng',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
+        backgroundColor: Colors.white,
+      ),
       body: Column(
         children: [
           //search bar
