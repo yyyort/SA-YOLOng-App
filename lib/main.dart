@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sa_yolo_ng/page/Homepage.dart';
-import 'package:sa_yolo_ng/page/SplashScreen.dart';
 import 'package:sa_yolo_ng/page/details/alumni1.dart';
 import 'package:sa_yolo_ng/page/ref/map_images.dart';
 import 'package:sa_yolo_ng/page/ref/whole_map.dart';
+import 'package:sa_yolo_ng/page/SplashScreen.dart';
 import 'package:sa_yolo_ng/service/firebase_options.dart';
 
 Future<void> main() async {
@@ -35,10 +35,15 @@ Future<void> main() async {
   runApp(const ProviderScope(child: MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  // This widget is the root of your application.s
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -48,7 +53,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
         useMaterial3: true,
       ),
-      home: SplashScreen(),
+      home: Splashscreen(),
+      //const Homepage(),
     );
     /*   */
   }

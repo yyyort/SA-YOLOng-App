@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sa_yolo_ng/model/parking_area.dart';
+
 import 'package:sa_yolo_ng/page/details/alumni1.dart';
 import 'package:sa_yolo_ng/page/details/alumni2.dart';
 import 'package:sa_yolo_ng/page/details/alumni3.dart';
@@ -11,7 +12,6 @@ import 'package:sa_yolo_ng/page/details/blanco2.dart';
 import 'package:sa_yolo_ng/page/details/dolce_garcia1.dart';
 import 'package:sa_yolo_ng/page/details/dolce_garcia2.dart';
 import 'package:sa_yolo_ng/page/details/gamboa.dart';
-import 'package:sa_yolo_ng/page/ref/whole_map.dart';
 
 class Homepage extends ConsumerStatefulWidget {
   const Homepage({super.key});
@@ -23,11 +23,6 @@ class Homepage extends ConsumerStatefulWidget {
 class _HomepageState extends ConsumerState<Homepage> {
   String search = '';
   String input = '';
-  int index = 0;
-  final screens = const [
-    Homepage(),
-    WholeMap(),
-  ];
   //default state
   @override
   void initState() {
@@ -60,7 +55,7 @@ class _HomepageState extends ConsumerState<Homepage> {
             ),
           ],
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
       ),
       body: Column(
         children: [
@@ -90,30 +85,6 @@ class _HomepageState extends ConsumerState<Homepage> {
           ),
         ],
       ),
-
-      //bottom navigation bar
-      bottomNavigationBar: Container(
-        child: NavigationBar(
-          height: 60,
-          backgroundColor: Color(0xFFf1f5fb),
-          selectedIndex: index,
-          onDestinationSelected: (index) => setState(() => this.index = index),
-          destinations: const [
-            NavigationDestination(
-              icon: Icon(Icons.home),
-              label: 'Home',
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.map),
-              label: 'Map',
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.live_help),
-              label: 'Help',
-            ),
-          ],
-        ),
-      ),
     );
   }
 }
@@ -136,6 +107,10 @@ class ParkingPlaces extends ConsumerWidget {
         return Expanded(
           child: Container(
             decoration: const BoxDecoration(
+              gradient: LinearGradient(colors: [
+                Color.fromRGBO(132, 1, 0, 1),
+                Color.fromRGBO(204, 179, 59, 1)
+              ], begin: Alignment.bottomLeft, end: Alignment.topRight),
               image: DecorationImage(
                 image: AssetImage('assets/images/Eagle_1.png'),
                 opacity: 0.4,
