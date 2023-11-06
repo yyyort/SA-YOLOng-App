@@ -24,7 +24,7 @@ class _FirstState extends State<First> {
     ),
     NavigationDestination(
       icon: Icon(Icons.message_outlined),
-      label: 'Faq',
+      label: 'Feedback',
     ),
   ];
 
