@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+
+final db = FirebaseFirestore.instance;
 
 class FeedbackForm extends StatefulWidget {
   const FeedbackForm({Key? key}) : super(key: key);
@@ -63,6 +64,9 @@ class _FeedbackFormState extends State<FeedbackForm> {
           ),
           onRatingUpdate: (rating) {
             // Handle the selected rating here
+            setState(() {
+              this.rating = rating;
+            });
           },
         ),
         SizedBox(height: 20),
@@ -73,12 +77,16 @@ class _FeedbackFormState extends State<FeedbackForm> {
             filled: true,
           ),
           maxLines: 4,
+          onChanged: (value) {
+            // Handle the text changes here
+            setState(() {
+              feedbackText = value;
+            });
+          },
         ),
         SizedBox(height: 20),
         ElevatedButton(
-          onPressed: () {
-            // Handle the submission of feedback here
-          },
+          onPressed: () async => await submitFeedback(),
           child: Text('Submit Feedback'),
         ),
       ],
@@ -88,6 +96,11 @@ class _FeedbackFormState extends State<FeedbackForm> {
   Future<void> submitFeedback() async {
     if (rating == 0 || feedbackText.isEmpty) {
       // Handle error: Rating and feedback text are required.
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Rating and feedback text are required.'),
+        ),
+      );
       return;
     }
 
@@ -98,6 +111,21 @@ class _FeedbackFormState extends State<FeedbackForm> {
     };
 
     try {
+      db.collection('feedback').add(feedback);
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text('Feedback submitted successfully.'),
+      ));
+    } catch (e) {
+      // Handle any errors while submitting feedback.
+      print('Error: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Failed to submit feedback. Please try again later.'),
+        ),
+      );
+    }
+
+    /* try {
       await FirebaseFirestore.instance.collection('feedback').add(feedback);
       // Successfully submitted feedback to Firestore.
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -111,6 +139,6 @@ class _FeedbackFormState extends State<FeedbackForm> {
           content: Text('Failed to submit feedback. Please try again later.'),
         ),
       );
-    }
+    } */
   }
 }
