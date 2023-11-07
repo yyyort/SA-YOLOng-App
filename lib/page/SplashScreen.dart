@@ -23,6 +23,7 @@ class Splashscreen extends StatelessWidget {
           nextScreen: const First(),
           splashTransition: SplashTransition.fadeTransition,
           backgroundColor: Colors.transparent,
+          splashIconSize: 500,
         ),
       ),
     );

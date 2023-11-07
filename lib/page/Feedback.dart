@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+//cjjjjj
 final db = FirebaseFirestore.instance;
 
 class FeedbackForm extends StatefulWidget {
@@ -16,10 +17,16 @@ class FeedBack extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
         elevation: 0,
         centerTitle: true,
-        title: const Text('Feedback'),
+        title: const Text(
+          'Feedback',
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       body: content(),
     );
@@ -32,6 +39,9 @@ class FeedBack extends StatelessWidget {
           Color.fromRGBO(132, 1, 0, 1),
           Color.fromRGBO(204, 179, 59, 1)
         ], begin: Alignment.bottomLeft, end: Alignment.topRight),
+        image: DecorationImage(
+          image: AssetImage('assets/images/Eagle_2.png'),
+        ),
       ),
       child: const Center(
         child: Padding(

@@ -46,7 +46,7 @@ class _HomepageState extends ConsumerState<Homepage> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('assets/images/usa_logo.png', height: 40, width: 40),
+            Image.asset('assets/images/usa_logo.png', height: 30, width: 30),
             const Text(
               'Sa Yolo\'Ng',
               style: TextStyle(
@@ -55,7 +55,7 @@ class _HomepageState extends ConsumerState<Homepage> {
             ),
           ],
         ),
-        backgroundColor: Colors.transparent,
+        backgroundColor: const Color.fromARGB(0, 73, 61, 61),
       ),
       body: Column(
         children: [
@@ -108,12 +108,11 @@ class ParkingPlaces extends ConsumerWidget {
           child: Container(
             decoration: const BoxDecoration(
               gradient: LinearGradient(colors: [
-                Color.fromRGBO(132, 1, 0, 1),
-                Color.fromRGBO(204, 179, 59, 1)
+                Color.fromRGBO(159, 136, 21, 1),
+                Color.fromRGBO(226, 102, 101, 1)
               ], begin: Alignment.bottomLeft, end: Alignment.topRight),
               image: DecorationImage(
-                image: AssetImage('assets/images/Eagle_1.png'),
-                opacity: 0.4,
+                image: AssetImage('assets/images/Eagle_2.png'),
               ),
             ),
             child: GridView.builder(

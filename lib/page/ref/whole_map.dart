@@ -1,14 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:photo_view/photo_view.dart';
+import 'package:photo_view/photo_view_gallery.dart';
 
 class WholeMap extends StatelessWidget {
-  const WholeMap({super.key});
+  const WholeMap({Key? key});
 
   @override
   Widget build(BuildContext context) {
-    return InteractiveViewer(
-      maxScale: 5.0,
-      minScale: 0.1,
-      child: Image.asset('assets/parking_places/map/whole.png'),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Zoomable and Rotatable Image'),
+      ),
+      body: Container(
+        color: Colors.black, // Set a background color if desired
+        child: Center(
+          child: PhotoView(
+            imageProvider: AssetImage('assets/parking_places/map/whole.png'),
+            backgroundDecoration: BoxDecoration(
+              color: Colors.black, // Set the background color
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
