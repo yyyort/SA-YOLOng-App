@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sa_yolo_ng/model/parking_area.dart';
-import 'package:sa_yolo_ng/widgets/btn_map.dart';
+import 'package:sa_yolo_ng/page/ref/map_images.dart';
 import 'package:sa_yolo_ng/widgets/car_occupancy.dart';
 import 'package:sa_yolo_ng/widgets/car_occupancy_horizontal.dart';
 
@@ -15,7 +15,6 @@ class AlumniHall2 extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset('assets/images/usa_logo.png', height: 40, width: 40),
             const Text(
@@ -27,7 +26,7 @@ class AlumniHall2 extends ConsumerWidget {
           ],
         ),
       ),
-      body: Column(
+      body: ListView(
         children: [
           stream.when(
             data: (data) {
@@ -73,7 +72,25 @@ class AlumniHall2 extends ConsumerWidget {
           const SizedBox(
             height: 40,
           ),
-          const ToMapWidget(location: 'Alumni Hall 2')
+          const Text(
+            'Map',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 30,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Image.asset('assets/parking_places/map/alumni2.png'),
+          const SizedBox(
+            height: 10,
+          ),
+          const ImageCaro(location: 'Alumni Hall 2'),
+          const SizedBox(
+            height: 10,
+          ),
         ],
       ),
     );

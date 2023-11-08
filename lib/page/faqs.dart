@@ -28,7 +28,7 @@ class FAQsPage extends StatelessWidget {
         ),
       ),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/images/Eagle_2.png'),
           ),
@@ -38,7 +38,7 @@ class FAQsPage extends StatelessWidget {
           ], begin: Alignment.bottomLeft, end: Alignment.topRight),
         ),
         child: ListView(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           children: <Widget>[
             FAQItem('Question 1', 'Answer to Question 1'),
             FAQItem('Question 2', 'Answer to Question 2'),

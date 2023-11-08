@@ -12,6 +12,7 @@ import 'package:sa_yolo_ng/page/SplashScreen.dart';
 import 'package:sa_yolo_ng/service/firebase_options.dart';
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -53,7 +54,7 @@ class _MyAppState extends State<MyApp> {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
         useMaterial3: true,
       ),
-      home: Splashscreen(),
+      home: const Splashscreen(),
       //const Homepage(),
     );
     /*   */

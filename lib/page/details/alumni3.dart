@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sa_yolo_ng/model/parking_area.dart';
-import 'package:sa_yolo_ng/widgets/btn_map.dart';
+import 'package:sa_yolo_ng/page/ref/map_images.dart';
 import 'package:sa_yolo_ng/widgets/car_occupancy.dart';
 
 class AlumniHall3 extends ConsumerWidget {
@@ -25,7 +25,7 @@ class AlumniHall3 extends ConsumerWidget {
           ],
         ),
       ),
-      body: Column(
+      body: ListView(
         children: [
           stream.when(
             data: (data) {
@@ -68,9 +68,27 @@ class AlumniHall3 extends ConsumerWidget {
             error: (error, stackTrace) => Text('Error: $error'),
           ),
           const SizedBox(
-            height: 20,
+            height: 40,
           ),
-          const ToMapWidget(location: 'Alumni Hall 3')
+          const Text(
+            'Map',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 30,
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Image.asset('assets/parking_places/map/alumni3.png'),
+          const SizedBox(
+            height: 10,
+          ),
+          const ImageCaro(location: 'Alumni Hall 3'),
+          const SizedBox(
+            height: 10,
+          ),
         ],
       ),
     );

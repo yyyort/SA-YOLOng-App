@@ -12,7 +12,7 @@ class Splashscreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
       ),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(colors: [
             Color.fromRGBO(132, 1, 0, 1),
             Color.fromRGBO(204, 179, 59, 1)

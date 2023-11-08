@@ -30,7 +30,7 @@ class AlumniHall1 extends ConsumerWidget {
           ],
         ),
       ),
-      body: Column(
+      body: ListView(
         children: [
           const SizedBox(
             height: 40,
@@ -79,7 +79,25 @@ class AlumniHall1 extends ConsumerWidget {
           const SizedBox(
             height: 40,
           ),
-          const ToMapWidget(location: 'Alumni Hall 1')
+          const Text(
+            'Map',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 30,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Image.asset('assets/parking_places/map/alumni1.png'),
+          const SizedBox(
+            height: 10,
+          ),
+          const ImageCaro(location: 'Alumni Hall 1'),
+          const SizedBox(
+            height: 10,
+          ),
         ],
       ),
     );

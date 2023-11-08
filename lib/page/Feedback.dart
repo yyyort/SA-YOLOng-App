@@ -45,7 +45,7 @@ class FeedBack extends StatelessWidget {
       ),
       child: const Center(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: EdgeInsets.all(16.0),
           child: FeedbackForm(),
         ),
       ),
@@ -67,8 +67,8 @@ class _FeedbackFormState extends State<FeedbackForm> {
           direction: Axis.horizontal,
           allowHalfRating: false,
           itemCount: 5,
-          itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-          itemBuilder: (context, _) => Icon(
+          itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+          itemBuilder: (context, _) => const Icon(
             Icons.star,
             color: Colors.amber,
           ),
@@ -79,9 +79,9 @@ class _FeedbackFormState extends State<FeedbackForm> {
             });
           },
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         TextField(
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             hintText: 'Enter your feedback here',
             fillColor: Colors.white,
             filled: true,
@@ -94,10 +94,10 @@ class _FeedbackFormState extends State<FeedbackForm> {
             });
           },
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         ElevatedButton(
           onPressed: () async => await submitFeedback(),
-          child: Text('Submit Feedback'),
+          child: const Text('Submit Feedback'),
         ),
       ],
     );
@@ -107,7 +107,7 @@ class _FeedbackFormState extends State<FeedbackForm> {
     if (rating == 0 || feedbackText.isEmpty) {
       // Handle error: Rating and feedback text are required.
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text('Rating and feedback text are required.'),
         ),
       );
@@ -122,14 +122,14 @@ class _FeedbackFormState extends State<FeedbackForm> {
 
     try {
       db.collection('feedback').add(feedback);
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text('Feedback submitted successfully.'),
       ));
     } catch (e) {
       // Handle any errors while submitting feedback.
-      print('Error: $e');
+
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text('Failed to submit feedback. Please try again later.'),
         ),
       );
