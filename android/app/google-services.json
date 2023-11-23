@@ -1,0 +1,118 @@
+{
+  "project_info": {
+    "project_number": "323975104495",
+    "project_id": "usa-parking-app",
+    "storage_bucket": "usa-parking-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:323975104495:android:3b5a69c2f3661ec952581a",
+        "android_client_info": {
+          "package_name": "com.example.sa_yolo_ng"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "323975104495-raflcdjmi4ccra5gklajje4b2kjencgp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADQZABHo0NxG2oicFIXCDuGE1e9Lzmkck"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "323975104495-raflcdjmi4ccra5gklajje4b2kjencgp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "323975104495-18o64bkohej735ff83lkcjf0ps0j4pmv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.saYoloNg"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:323975104495:android:a9d34d83ca48be6052581a",
+        "android_client_info": {
+          "package_name": "com.example.usa_parking_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "323975104495-raflcdjmi4ccra5gklajje4b2kjencgp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADQZABHo0NxG2oicFIXCDuGE1e9Lzmkck"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "323975104495-raflcdjmi4ccra5gklajje4b2kjencgp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "323975104495-18o64bkohej735ff83lkcjf0ps0j4pmv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.saYoloNg"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:323975104495:android:e14a7b84905a408a52581a",
+        "android_client_info": {
+          "package_name": "com.example.usa_smart_parking_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "323975104495-raflcdjmi4ccra5gklajje4b2kjencgp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADQZABHo0NxG2oicFIXCDuGE1e9Lzmkck"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "323975104495-raflcdjmi4ccra5gklajje4b2kjencgp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "323975104495-18o64bkohej735ff83lkcjf0ps0j4pmv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.saYoloNg"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
