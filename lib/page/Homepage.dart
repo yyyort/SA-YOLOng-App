@@ -12,6 +12,8 @@ import 'package:sa_yolo_ng/page/details/blanco2.dart';
 import 'package:sa_yolo_ng/page/details/dolce_garcia1.dart';
 import 'package:sa_yolo_ng/page/details/dolce_garcia2.dart';
 import 'package:sa_yolo_ng/page/details/gamboa.dart';
+import 'package:sa_yolo_ng/page/whole_map.dart';
+import 'package:sa_yolo_ng/page/faq.dart';
 
 class Homepage extends ConsumerStatefulWidget {
   const Homepage({super.key});
