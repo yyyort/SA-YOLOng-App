@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sa_yolo_ng/model/parking_area.dart';
+
 import 'package:sa_yolo_ng/page/details/alumni1.dart';
 import 'package:sa_yolo_ng/page/details/alumni2.dart';
 import 'package:sa_yolo_ng/page/details/alumni3.dart';
@@ -47,7 +48,7 @@ class _HomepageState extends ConsumerState<Homepage> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('assets/images/usa_logo.png', height: 40, width: 40),
+            Image.asset('assets/images/usa_logo.png', height: 30, width: 30),
             const Text(
               'Sa Yolo\'Ng',
               style: TextStyle(
@@ -56,7 +57,7 @@ class _HomepageState extends ConsumerState<Homepage> {
             ),
           ],
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: const Color.fromARGB(0, 73, 61, 61),
       ),
       body: Column(
         children: [
@@ -108,9 +109,12 @@ class ParkingPlaces extends ConsumerWidget {
         return Expanded(
           child: Container(
             decoration: const BoxDecoration(
+              gradient: LinearGradient(colors: [
+                Color.fromRGBO(159, 136, 21, 1),
+                Color.fromRGBO(226, 102, 101, 1)
+              ], begin: Alignment.bottomLeft, end: Alignment.topRight),
               image: DecorationImage(
-                image: AssetImage('assets/images/Eagle_1.png'),
-                opacity: 0.4,
+                image: AssetImage('assets/images/Eagle_2.png'),
               ),
             ),
             child: GridView.builder(

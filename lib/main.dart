@@ -8,11 +8,14 @@ import 'package:sa_yolo_ng/page/Homepage.dart';
 import 'package:sa_yolo_ng/page/details/alumni1.dart';
 import 'package:sa_yolo_ng/page/ref/map_images.dart';
 import 'package:sa_yolo_ng/page/ref/whole_map.dart';
-import 'package:sa_yolo_ng/page/splash.dart';
+
+import 'package:sa_yolo_ng/page/SplashScreen.dart';
+
 import 'package:sa_yolo_ng/service/firebase_options.dart';
 import 'package:sa_yolo_ng/page/faq.dart';
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );

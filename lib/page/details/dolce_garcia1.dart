@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sa_yolo_ng/model/parking_area.dart';
-import 'package:sa_yolo_ng/widgets/btn_map.dart';
+import 'package:sa_yolo_ng/page/ref/map_images.dart';
 import 'package:sa_yolo_ng/widgets/car_occupancy_horizontal.dart';
 import 'package:sa_yolo_ng/widgets/car_occupancy_horizontal_right.dart';
 
@@ -26,7 +26,7 @@ class DolseGarciaHall1 extends ConsumerWidget {
           ],
         ),
       ),
-      body: Column(
+      body: ListView(
         children: [
           stream.when(
             data: (data) {
@@ -71,7 +71,25 @@ class DolseGarciaHall1 extends ConsumerWidget {
           const SizedBox(
             height: 40,
           ),
-          const ToMapWidget(location: 'Dolse Garcia Hall 1')
+          const Text(
+            'Map',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 30,
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Image.asset('assets/parking_places/map/dolse.png'),
+          const SizedBox(
+            height: 10,
+          ),
+          const ImageCaro(location: 'Dolse Garcia Hall 1'),
+          const SizedBox(
+            height: 10,
+          ),
         ],
       ),
     );
