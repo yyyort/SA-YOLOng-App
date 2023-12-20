@@ -4,7 +4,7 @@ class FAQsApp extends StatelessWidget {
   const FAQsApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false, // Disable the debug banner
       home: FAQsPage(),
     );
@@ -12,6 +12,8 @@ class FAQsApp extends StatelessWidget {
 }
 
 class FAQsPage extends StatelessWidget {
+  const FAQsPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +41,7 @@ class FAQsPage extends StatelessWidget {
         ),
         child: ListView(
           padding: const EdgeInsets.all(16.0),
-          children: <Widget>[
+          children: const <Widget>[
             FAQItem('Question 1', 'Answer to Question 1'),
             FAQItem('Question 2', 'Answer to Question 2'),
             // Add more FAQ items as needed
@@ -54,7 +56,7 @@ class FAQItem extends StatelessWidget {
   final String question;
   final String answer;
 
-  FAQItem(this.question, this.answer);
+  const FAQItem(this.question, this.answer, {super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
-import 'package:sa_yolo_ng/page/Homepage.dart';
 import 'package:sa_yolo_ng/page/first.dart';
 
 class Splashscreen extends StatelessWidget {
@@ -13,7 +12,7 @@ class Splashscreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
       ),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(colors: [
             Color.fromRGBO(204, 179, 59, 1),
             Color.fromRGBO(132, 1, 0, 1)

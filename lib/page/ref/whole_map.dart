@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 
 class WholeMap extends StatelessWidget {
-  const WholeMap({Key? key});
+  const WholeMap({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
