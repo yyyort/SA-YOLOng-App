@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:sa_yolo_ng/auth_pages/intro.dart';
-import 'package:sa_yolo_ng/page/first.dart';
 
 class Splashscreen extends StatelessWidget {
   const Splashscreen({Key? key}) : super(key: key);

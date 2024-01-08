@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sa_yolo_ng/auth_pages/login.dart';
+import 'package:sa_yolo_ng/auth_pages/signup.dart';
 
 class Intro extends StatelessWidget {
   const Intro({super.key});
@@ -12,7 +13,7 @@ class Intro extends StatelessWidget {
             gradient: LinearGradient(colors: [
               Color.fromRGBO(132, 1, 0, 1),
               Color.fromRGBO(204, 179, 59, 1)
-            ]),
+            ], begin: Alignment.bottomLeft, end: Alignment.topRight),
             image: DecorationImage(
               image: AssetImage("assets/images/splash_logo.png"),
             )),
@@ -45,7 +46,17 @@ class AuthButton extends StatelessWidget {
       height: 60,
       width: 300,
       decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(30))),
+        borderRadius: BorderRadius.all(
+          Radius.circular(30),
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black,
+            blurRadius: 10,
+            offset: Offset(3, 5),
+          ),
+        ],
+      ),
       child: ElevatedButton(
           onPressed: () {
             switch (name) {
@@ -55,7 +66,7 @@ class AuthButton extends StatelessWidget {
                 break;
               case "Sign up":
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Login()));
+                    MaterialPageRoute(builder: (context) => const Signup()));
                 break;
             }
           },
@@ -64,6 +75,7 @@ class AuthButton extends StatelessWidget {
             style: const TextStyle(
               fontSize: 30,
               fontWeight: FontWeight.bold,
+              color: Colors.red,
             ),
           )),
     );

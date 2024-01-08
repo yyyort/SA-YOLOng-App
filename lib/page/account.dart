@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:sa_yolo_ng/auth_pages/intro.dart';
+import 'package:sa_yolo_ng/page/SplashScreen.dart';
 
 class Account extends StatelessWidget {
   const Account({Key? key}) : super(key: key);
@@ -54,7 +54,7 @@ class AccountPage extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return const Intro();
+                      return const Splashscreen();
                     },
                   ),
                 );

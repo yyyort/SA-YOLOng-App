@@ -28,12 +28,13 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(colors: [
             Color.fromRGBO(132, 1, 0, 1),
             Color.fromRGBO(204, 179, 59, 1)
-          ]),
+          ], begin: Alignment.bottomLeft, end: Alignment.topRight),
           image: DecorationImage(
             image: AssetImage("assets/images/splash_logo.png"),
           ),
