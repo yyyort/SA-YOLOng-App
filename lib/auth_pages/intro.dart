@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sa_yolo_ng/auth_pages/login.dart';
 
 class Intro extends StatelessWidget {
   const Intro({super.key});
@@ -15,7 +16,7 @@ class Intro extends StatelessWidget {
             image: DecorationImage(
               image: AssetImage("assets/images/splash_logo.png"),
             )),
-        child: Center(
+        child: const Center(
           child: Column(
             children: [
               SizedBox(
@@ -40,16 +41,27 @@ class AuthButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       height: 60,
       width: 300,
-      decoration:
-          BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(30))),
+      decoration: const BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(30))),
       child: ElevatedButton(
-          onPressed: () => {},
+          onPressed: () {
+            switch (name) {
+              case "Login":
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Login()));
+                break;
+              case "Sign up":
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Login()));
+                break;
+            }
+          },
           child: Text(
             name,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 30,
               fontWeight: FontWeight.bold,
             ),
