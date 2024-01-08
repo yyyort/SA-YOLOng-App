@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:sa_yolo_ng/page/SplashScreen.dart';
 import 'package:sa_yolo_ng/page/first.dart';
 import 'package:sa_yolo_ng/service/firebase_auth_services.dart';
 import 'package:sa_yolo_ng/toast.dart';
@@ -119,7 +118,7 @@ class _SignupState extends State<Signup> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => First(),
+            builder: (context) => const First(),
           ),
         );
       } else {

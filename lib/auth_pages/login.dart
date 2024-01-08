@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:sa_yolo_ng/page/SplashScreen.dart';
 import 'package:sa_yolo_ng/page/first.dart';
 import 'package:sa_yolo_ng/service/firebase_auth_services.dart';
 import 'package:sa_yolo_ng/toast.dart';
