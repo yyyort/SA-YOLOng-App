@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 //import 'package:sa_yolo_ng/detail_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sa_yolo_ng/auth_pages/intro.dart';
 import 'package:sa_yolo_ng/page/Homepage.dart';
 import 'package:sa_yolo_ng/page/details/alumni1.dart';
 import 'package:sa_yolo_ng/page/ref/map_images.dart';
@@ -54,7 +55,7 @@ class _MyAppState extends State<MyApp> {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
         useMaterial3: true,
       ),
-      home: const Splashscreen(),
+      home: const Intro(),
       //const Homepage(),
     );
     /*   */
