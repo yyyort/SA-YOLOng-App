@@ -5,7 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sa_yolo_ng/auth_pages/intro.dart';
+import 'package:sa_yolo_ng/auth_pages/login.dart';
+import 'package:sa_yolo_ng/auth_pages/signup.dart';
 import 'package:sa_yolo_ng/page/Homepage.dart';
+import 'package:sa_yolo_ng/page/account.dart';
 import 'package:sa_yolo_ng/page/details/alumni1.dart';
 import 'package:sa_yolo_ng/page/ref/map_images.dart';
 import 'package:sa_yolo_ng/page/ref/whole_map.dart';
@@ -55,7 +58,7 @@ class _MyAppState extends State<MyApp> {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
         useMaterial3: true,
       ),
-      home: const Intro(),
+      home: const Splashscreen(),
       //const Homepage(),
     );
     /*   */

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sa_yolo_ng/page/Homepage.dart';
 import 'package:sa_yolo_ng/page/Feedback.dart';
+import 'package:sa_yolo_ng/page/account.dart';
 import 'package:sa_yolo_ng/page/faqs.dart';
 import 'package:sa_yolo_ng/page/ref/whole_map.dart';
 
@@ -31,6 +32,10 @@ class _FirstState extends State<First> {
       icon: Icon(Icons.star),
       label: 'Feedback',
     ),
+    NavigationDestination(
+      icon: Icon(Icons.person),
+      label: "account",
+    )
   ];
 
   final List<Widget> _pages = [
@@ -39,6 +44,7 @@ class _FirstState extends State<First> {
     const WholeMap(),
     const FAQsApp(),
     const FeedBack(),
+    const Account(),
   ];
 
   @override

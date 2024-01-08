@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:sa_yolo_ng/auth_pages/intro.dart';
 import 'package:sa_yolo_ng/page/first.dart';
 
 class Splashscreen extends StatelessWidget {
@@ -20,7 +21,7 @@ class Splashscreen extends StatelessWidget {
         ),
         child: AnimatedSplashScreen(
           splash: Image.asset('assets/images/splash_logo.png'),
-          nextScreen: const First(),
+          nextScreen: const Intro(),
           splashTransition: SplashTransition.fadeTransition,
           backgroundColor: Colors.transparent,
           splashIconSize: 500,
