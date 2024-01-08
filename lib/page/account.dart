@@ -68,7 +68,7 @@ class AccountPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(30),
                       color: const Color.fromRGBO(242, 104, 104, 0.949),
                     ),
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         "Logout",
                         style: TextStyle(
