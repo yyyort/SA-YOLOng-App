@@ -1,10 +1,19 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sa_yolo_ng/auth_pages/login.dart';
 import 'package:sa_yolo_ng/auth_pages/signup.dart';
+import 'package:sa_yolo_ng/page/first.dart';
+import 'package:sa_yolo_ng/service/firebase_auth_services.dart';
+import 'package:sa_yolo_ng/toast.dart';
 
-class Intro extends StatelessWidget {
+class Intro extends StatefulWidget {
   const Intro({super.key});
 
+  @override
+  State<Intro> createState() => _IntroState();
+}
+
+class _IntroState extends State<Intro> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,10 +43,17 @@ class Intro extends StatelessWidget {
   }
 }
 
-class AuthButton extends StatelessWidget {
+class AuthButton extends StatefulWidget {
   final String name;
 
   const AuthButton({super.key, required this.name});
+
+  @override
+  State<AuthButton> createState() => _AuthButtonState();
+}
+
+class _AuthButtonState extends State<AuthButton> {
+  final FirebaseAuthService _auth = FirebaseAuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +75,7 @@ class AuthButton extends StatelessWidget {
       ),
       child: ElevatedButton(
           onPressed: () {
-            switch (name) {
+            switch (widget.name) {
               case "Login":
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => const Login()));
@@ -68,10 +84,13 @@ class AuthButton extends StatelessWidget {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => const Signup()));
                 break;
+              case "Guess Login":
+                _signInAnonymously();
+                break;
             }
           },
           child: Text(
-            name,
+            widget.name,
             style: const TextStyle(
               fontSize: 30,
               fontWeight: FontWeight.bold,
@@ -79,5 +98,17 @@ class AuthButton extends StatelessWidget {
             ),
           )),
     );
+  }
+
+  void _signInAnonymously() async {
+    User? user = await _auth.signInAnonymously();
+
+    if (user != null) {
+      showToast(message: 'Sign in Anonymously success');
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => const First()));
+    } else {
+      showToast(message: 'Sign in failed.');
+    }
   }
 }

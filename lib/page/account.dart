@@ -50,7 +50,7 @@ class AccountPage extends StatelessWidget {
             GestureDetector(
               onTap: () {
                 FirebaseAuth.instance.signOut();
-                Navigator.push(
+                Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
                     builder: (context) {
